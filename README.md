@@ -1,2 +1,0 @@
-# NDCHoloLensDocumentation
-# NDCHoloLensDocumentation
