@@ -3,19 +3,19 @@ Welcome to the NDC HoloLens Documentation! \
 Click [here](User_Help.md) if you are looking for help with using the HoloLens program.\
 It is recommended that you have a basic understanding of coding in Unity before looking at this documentation.
 
-1. [DOTween (animations)](#Dotween)
-2. [Adding Products](#Adding-Products)
-     1. [Model Requirements](#Model-Requirements)
-     2. [Service Scripts](#Service-Scripts)
-     3. [Physical Product](#Physical-Product)
-     4. [Physical Part](#Physical-Part)
-     5. [Adding a Product to the List](#Adding-a-Product-to-the-List)
-3. [Online Connections](#Online-Connections)
-	1. [Connecting to a server](#Connecting-to-a-Server)
-	2. [NetworkOutMessage and NetworkInMessage](#NetworkOutMessage-and-NetworkInMessage)
-	3. [Adding Custom Messages](#Adding-Custom-Messages)
-		1. [Sending Messages](#Sending_Messages)
-		2. [Receiving Messages and Processing](#Receiving-Messages-and-Processing)
+1. [DOTween (animations)](#dotween)
+2. [Adding Products](#adding-products)
+     1. [Model Requirements](#model-requirements)
+     2. [Service Scripts](#service-scripts)
+     3. [Physical Product](#physical-product)
+     4. [Physical Part](#physical-part)
+     5. [Adding a Product to the List](#adding-a-product-to-the-list)
+3. [Online Connections](#online-connections)
+	1. [Connecting to a server](#connecting-to-a-server)
+	2. [NetworkOutMessage and NetworkInMessage](#networkoutmessage-and-networkinmessage)
+	3. [Adding Custom Messages](#adding-custom-messages)
+		1. [Sending Messages](#sending-messages)
+		2. [Receiving Messages and Processing](#receiving-messages-and-processing)
 
 ***
 ## DOTween
