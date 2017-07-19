@@ -162,4 +162,4 @@ It is recommended that you have a basic understanding of coding in Unity before 
 \
 \
 \
-Written By JC Pyron (Blame me not the Devs for the awful documentation)
+Written By JC Pyron (Blame me, not the Devs, for the awful documentation)
