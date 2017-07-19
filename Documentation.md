@@ -74,7 +74,7 @@ It is recommended that you have a basic understanding of coding in Unity before 
   Drag TransitionInPPAnimationModule.cs, This give you some options to remove this part quickly, inside of the service menu before selecting a part to service.
 ###### Service Part Animation
   In the Remove Steps array, add all of the parts that must be removed before this part, in the order they must be removed. For example, the circuit board on the Accuscan has Bolts at index 0 and the plate at index 1.\
-  In Populate Step, place the animation to be played to remove the part. To do this, click the plus and drag and drop the game object that has the service script into the new event. Then select the animation method from the list (This will be covered further in the [Service Scripts](#service-scripts) section).\
+  In Populate Step, place the animation to be played to remove the part. To do this, click the plus and drag and drop the game object that has the service script into the new event. Then select the animation method from the list (This will be covered further in the [Service Scripts](#service-scripts) section). If you do not wish to develop your own animations for a part, PhysicalProductAnimator has some default basic animations you can choose from.\
   In Servicing Tools, add to the array and select the tools needed for the job.\
   In Servicing Materials, add to the array and add the needed materials to replace the part.\
 #### Service Scripts
@@ -92,7 +92,6 @@ It is recommended that you have a basic understanding of coding in Unity before 
   _*ADDITIONS NEEDED!!!!!!*_
 
   See [UltrascanService.cs](Examples/UltrascanService.cs) for Reference.
-
 #### Adding a Product to the List
   After a Product has been configured and all of the scripts have bee added, save the game object as a prefab by dragging the game object to the project window. Then, in the Assets/Resources folder select the DataStore Object. Press the Plus in the Products drop down, provide the requested information, drag in the new prefab, and select whether or not it can be serviced or demoed.
 
@@ -114,13 +113,11 @@ It is recommended that you have a basic understanding of coding in Unity before 
   Messages are limited to using very simple information, like strings, bytes, ints, floats, etc; however, you can use many lines of information. For example, to send a Vector3, you could send the x, y, and z components as separate lines of the same message, or use the helper method ```AppendVector3(Vector)```.
 
   Firstly, drag the Networking Prefab into the Scene, or create an empty game object and drag in the Sharing Stage and Network Controller scripts.
-
 #### Connecting to a Server
   Connecting to a server is relatively simple. Simply drag in the provided Networking Prefab, or drag the Sharing Stage script onto an empty game object. In this, you should fill in the Server Address and Server Port areas in the inspector. If you want to set these values in your code, use the following inside of NetworkController.cs:
   ```csharp
   stage.Manager.SetServerConnectionInfo(/*server address*/,(byte)/*server port as int*/);
   ```
-
 #### Connecting to a Session
   Sessions are like the server's rooms. Each session holds and communicates with only those inside of it. This way, you can have multiple groups in their own sessions on the server without getting the interactions jumbled.
   Connecting to a session is as easy as inputting the following line of code
@@ -137,7 +134,6 @@ It is recommended that you have a basic understanding of coding in Unity before 
    ```csharp
   NetworkController.main.CreateSession(/*session name*/);
   ```
-
 #### NetworkOutMessage and NetworkInMessage
   Messages are sent in-between devices to communicate actions or provide data.
 
@@ -146,3 +142,20 @@ It is recommended that you have a basic understanding of coding in Unity before 
 ###### Sending Messages
 
 ###### Receiving Messages and Processing
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Written By JC Pyron (Blame me not the Devs for the awful documentation)
