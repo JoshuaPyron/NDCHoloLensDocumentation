@@ -14,7 +14,7 @@ It is recommended that you have a basic understanding of coding in Unity before 
 	1. [Connecting to a server](#Connecting-to-a-Server)
 	2. [NetworkOutMessage and NetworkInMessage](#NetworkOutMessage-and-NetworkInMessage)
 	3. [Adding Custom Messages](#Adding-Custom-Messages)
-		1. [Sending Messages](#Sending Messages)
+		1. [Sending Messages](#Sending_Messages)
 		2. [Receiving Messages and Processing](#Receiving-Messages-and-Processing)
 
 ***
