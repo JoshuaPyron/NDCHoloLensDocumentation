@@ -1,16 +1,18 @@
 # NDC Holographic Assistant
 Welcome to the NDC HoloLens Documentation! \
-Click [here](User_Help.md) if you are looking for help with using the NDC Holographic Assistant.\
+Click [here](User_Help.md "User Manual") if you are looking for help with using the NDC Holographic Assistant.\
 It is recommended that you have a basic understanding of coding in Unity before looking at this documentation.
 
 1. [DOTween (animations)](#dotween)
 2. [Adding Products](#adding-products)
      1. [Model Requirements](#model-requirements)
-     2. [Service Scripts](#service-scripts)
-     3. [Physical Product](#physical-product)
-     4. [Physical Part](#physical-part)
+     2. [Physical Product](#physical-product)
+     3. [Physical Part](#physical-part)
+     4. [Service Scripts](#service-scripts)
      5. [Adding a Product to the List](#adding-a-product-to-the-list)
-3. [Online Connections](#online-connections)
+3. [Designing a Menu](#designing-a-menu)
+    1. [Widgets](#widgets)
+4. [Online Connections](#online-connections)
 	1. [Connecting to a Server](#connecting-to-a-server)
   2. [Connecting to a Session](#connecting-to-a-session)
 	2. [NetworkOutMessage and NetworkInMessage](#networkoutmessage-and-networkinmessage)
@@ -20,20 +22,82 @@ It is recommended that you have a basic understanding of coding in Unity before 
 
 ***
 ## DOTween
-DOTween is a free add-on for Unity. It adds multiple methods and Classes designed to assist in creating fluid animations in scripts.
-
+  DOTween is a free add-on for Unity. It adds multiple methods and Classes designed to assist in creating fluid animations in scripts.
+  there are various Methods that can chain together to make custom animations in your script. For example, the following would move myObject to the point 1,2,3 in half a second after waiting 0.1 seconds using the InOutCubic Ease function:
+  ```csharp
+  myObject.transform.DOLocalMove(new Vector3(1,2,3),0.5f).SetDelay(0.1f).SetEase(Ease.InOutCubic);
+  ```
+#### [Easings](#http://easings.net/ "Ease Functions")
+  Easings are functions that smooth the movement of objects. For example, InOutCubic gives a slow beginning and end, while the middle goes faster. \
+  Click on the section title to see a list of Ease functions.
 
 ## Adding Products
-
 #### Model Requirements
-
-#### Service Scripts
-
+  * The Product will be assembled in Unity
+  * Each part must be its own model
+  * It is recommended that the product's prefab be structured using various empty game objects to sort the parts
+  * See the configured Prefabs in the Assets/"Models(3d)"
+  * The models must be in one of the following formats:
+    * OBJ
+    * FBX
+    * STL
+    * DAE
+    * 3DS
+    * X3D
+    * ABC
+    * BVH
+    * DXF
+    * SKP
+    * PLY
+    * WRL
+    * SVG
 #### Physical Product
-
+  When the parts are all in place, drag PhysicalProduct.cs into the parent game object (the container of all of the parts).
+  In the inspector, there should be 3 different sections, Service Animation, Demo Animation, and Disable When Minimized.
+###### Service Animation
+  If you wish to add animations to a product when it is selected for the service menu, add the animations here. For example, the front plate of the Accuscan is removed and placed into the back.
+###### Demo Animation
+  If you wish to develop an animation that the product will play when demoed, place it here, for example the Ultrascan plays a small animation of it disassembling and reassembling.
+###### Disable When Minimized
+  In this section, add all of the parts not visible on the outside. The parts added to this section are disabled unless the product is selected to be serviced. This increases performance.
+###### Remaining Values
+  Provide a float that represents the scale of a product when in the selection screen. This will allow the program to scale the product appropriately based on its size.
+  Provide 3 floats that represent the rotation of a product so that it is angled properly in the selection screen. 
 #### Physical Part
+  Each part and containers of parts must have a Physical Part script in order to appear in the Service menu. Her you must fill out the name, instructions on how to remove the part (assuming the other necessary parts are removed), animations, and the parts that need to be removed before this part.
+###### Editor Tools
+  The "Actual Position Offset" is where the pointer will point to and "Product Rotation To Make Visible" is the rotation where the part is best seen. These values can be changed form the inspector, or if you check "Enable Editor Tools", you can move these points inside of the scene.
+###### Animation
+  Drag TransitionInPPAnimationModule.cs, This give you some options to remove this part quickly, inside of the service menu before selecting a part to service.
+###### Service Part Animation
+  In the Remove Steps array, add all of the parts that must be removed before this part, in the order they must be removed. For example, the circuit board on the Accuscan has Bolts at index 0 and the plate at index 1.\
+  In Populate Step, place the animation to be played to remove the part. To do this, click the plus and drag and drop the game object that has the service script into the new event. Then select the animation method from the list (This will be covered further in the [Service Scripts](#service-scripts) section).\
+  In Servicing Tools, add to the array and select the tools needed for the job.\
+  In Servicing Materials, add to the array and add the needed materials to replace the part.\
+#### Service Scripts
+The Service Scripts are used to create animations for each of the parts when they are removed during servicing. To start, create a script (Usually of the format: "ProductNameService") that inherits PhysicalProductAnimator. The Start method is where you designate the products layers and should initially look something like the following:
+```csharp
+protected override void Start() {
+        base.Start();
+        physicalProduct.justMovedToThisLayer += delegate (PhysicalSceneObject THIS, bool down) {
+            if (down) { resetProduct(); }
+            else {  }
+        };
+        physicalProduct.parts[1].justMovedToThisLayer += delegate (PhysicalSceneObject THIS, bool down) {
+            if (down){}
+            else{}
+         };
+    }
+```
 
 #### Adding a Product to the List
+
+
+
+## Designing a Menu
+
+#### Widgets
+
 
 
 ## Online Connections
@@ -70,6 +134,7 @@ NetworkController.main.CreateSession(/*session name*/);
 ```
 
 #### NetworkOutMessage and NetworkInMessage
+Messages are sent in-between devices to communicate actions or provide data.
 
 #### Adding Custom Messages
 
