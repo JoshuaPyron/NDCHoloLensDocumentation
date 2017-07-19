@@ -91,7 +91,7 @@ It is recommended that you have a basic understanding of coding in Unity before 
 
   _*ADDITIONS NEEDED!!!!!!*_
 
-  See [AccuscanService.cs](#Examples/AccuscanService.cs) for Reference.
+  See [AccuscanService.cs](Examples/AccuscanService.cs) for Reference.
 
 #### Adding a Product to the List
   After a Product has been configured and all of the scripts have bee added, save the game object as a prefab by dragging the game object to the project window. Then, in the Assets/Resources folder select the DataStore Object. Press the Plus in the Products drop down, provide the requested information, drag in the new prefab, and select whether or not it can be serviced or demoed.
