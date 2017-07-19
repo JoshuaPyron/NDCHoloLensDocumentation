@@ -40,15 +40,17 @@ DOTween is a free add-on for Unity. It adds multiple methods and Classes designe
 Being able to share Holograms, whether in the same room or across the country, is a very interesting part of the HoloLens.
 This section will concentrate on connecting to a server, creating, sending, and receiving messages.
 
-The general concept of connecting HoloLenses relies on sending and receiving  messages. These are used to communicate actions across the internet. A good way of imagining the interaction is having 2 panels of buttons. When you hit a button, you tell the other person that you hit the button. The person then hits the same button in order to remain at the same point as you. In the HoloLens, whenever a button is pressed or an object moved, the system sends a message to the server, which is then distributed to all of the other HoloLenses. When the message is received, each system used the information in the message to alter its own environment.
+The general concept of connecting HoloLenses relies on sending and receiving  messages. In the HoloLens, whenever a button is pressed or an object moved, the system sends a message to the server, which is then distributed to all of the other HoloLenses. When the message is received, each system used the information in the message to alter its own environment.  For example, if you pressed a button, the HoloLens would send a message to tell the others about the button being pressed, which would then be processed by the HoloLens pressing the same button.
 
-Messages are used to tell the other HoloLenses what your HoloLens just did. For example, if you pressed a button, the HoloLens would send a message to tell the others about the button being pressed.
-Messages are limited to using very simple information, like strings, bytes, ints, floats, etc. You are limited to these data types; however, you can use many lines of information. For example, to send a Vector3, you could send the x, y, and z components as separate lines of the same message.
+Messages are limited to using very simple information, like strings, bytes, ints, floats, etc; however, you can use many lines of information. For example, to send a Vector3, you could send the x, y, and z components as separate lines of the same message, or use the helper method ```AppendVector3(Vector)```.
 
-Firstly drag the Networking Prefab into the Scene, or create an empty game object and drag in the Sharing Stage and Network Controller scripts.
+Firstly, drag the Networking Prefab into the Scene, or create an empty game object and drag in the Sharing Stage and Network Controller scripts.
 
 #### Connecting to a Server
-Connecting to a server is relatively simple. Simply drag in the provided Networking Prefab, or drag the Sharing Stage script onto an empty game object. In this, you should fill in the Server Address and Server Port areas in the inspector.
+Connecting to a server is relatively simple. Simply drag in the provided Networking Prefab, or drag the Sharing Stage script onto an empty game object. In this, you should fill in the Server Address and Server Port areas in the inspector. If you want to set these values in your code, use the following inside of NetworkController.cs:
+```cs
+stage.Manager.SetServerConnectionInfo(/*server address*/,(byte)/*server port as int*/);
+```
 
 #### Connecting to a Session
 Sessions are like the server's rooms. Each session holds and communicates with only those inside of it. This way, you can have multiple groups in their own sessions on the server without getting the interactions jumbled.
