@@ -1,14 +1,16 @@
-# NDC HoloLens Experience
+# NDC Holographic Assistant
 Welcome and thank you for using our product!
+Click [here](Documentation.md) if you are looking for the documentation for coding the NDC Holographic Assistant.\
 
-1. [Using the HoloLens](#)
-  1. [Input Methods](#)
-  2. [Configuration](#)
-2. [Using the NDC Technical Assistant](#)
-  1. [Menus and Navigation](#)
-  2. [Moving the UI](#)
-  3. [Sharing Service](#)
-  4. [Service Menu](#)
+
+1. [Using the HoloLens](#using-the-holoLens)
+  1. [Input Methods](#input-methods)
+  2. [Configuration](#configuration)
+2. [Using the NDC Holographic Assistant](#using-the-ndc-holographic-assistant)
+  1. [Menus and Navigation](#menus-and-navigation)
+  2. [Moving the UI](#moving-the-ui)
+  3. [Sharing Service](#sharing-service)
+  4. [Service Menu](#service-menu)
 
 ## Using the HoloLens
 
@@ -16,7 +18,7 @@ Welcome and thank you for using our product!
 
 #### Configuration
 
-## Using the NDC Technical Assistant
+## Using the NDC Holographic Assistant
 
 #### Menus and Navigation
 

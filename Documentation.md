@@ -1,6 +1,6 @@
-# NDC HoloLens Experience
+# NDC Holographic Assistant
 Welcome to the NDC HoloLens Documentation! \
-Click [here](User_Help.md) if you are looking for help with using the HoloLens program.\
+Click [here](User_Help.md) if you are looking for help with using the NDC Holographic Assistant.\
 It is recommended that you have a basic understanding of coding in Unity before looking at this documentation.
 
 1. [DOTween (animations)](#dotween)
@@ -11,7 +11,8 @@ It is recommended that you have a basic understanding of coding in Unity before 
      4. [Physical Part](#physical-part)
      5. [Adding a Product to the List](#adding-a-product-to-the-list)
 3. [Online Connections](#online-connections)
-	1. [Connecting to a server](#connecting-to-a-server)
+	1. [Connecting to a Server](#connecting-to-a-server)
+  2. [Connecting to a Session](#connecting-to-a-session)
 	2. [NetworkOutMessage and NetworkInMessage](#networkoutmessage-and-networkinmessage)
 	3. [Adding Custom Messages](#adding-custom-messages)
 		1. [Sending Messages](#sending-messages)
@@ -44,8 +45,27 @@ The general concept of connecting HoloLenses relies on sending and receiving  me
 Messages are used to tell the other HoloLenses what your HoloLens just did. For example, if you pressed a button, the HoloLens would send a message to tell the others about the button being pressed.
 Messages are limited to using very simple information, like strings, bytes, ints, floats, etc. You are limited to these data types; however, you can use many lines of information. For example, to send a Vector3, you could send the x, y, and z components as separate lines of the same message.
 
+Firstly drag the Networking Prefab into the Scene, or create an empty game object and drag in the Sharing Stage and Network Controller scripts.
+
 #### Connecting to a Server
-Connecting to a server is relatively simple. Simply drag in the provided Networking Prefab, or drag the Sharing Stage script onto an empty game object. In this, you should fill in the Server Address and Server Port areas in the inspector. If you wish to automatically join the server,
+Connecting to a server is relatively simple. Simply drag in the provided Networking Prefab, or drag the Sharing Stage script onto an empty game object. In this, you should fill in the Server Address and Server Port areas in the inspector.
+
+#### Connecting to a Session
+Sessions are like the server's rooms. Each session holds and communicates with only those inside of it. This way, you can have multiple groups in their own sessions on the server without getting the interactions jumbled.
+Connecting to a session is as easy as inputting the following line of code
+```cs
+NetworkController.main.Join(/*session object*/);
+//or
+NetworkController.main.FindandJoin(/*session name*/);
+//or
+NetworkController.main.FindandJoin();//uses the provided Default Session name
+```
+These methods return true if they successfully connect to the session.
+
+Though the NDC Holographic Assistant does not allow users to create sessions, this is possible by using
+ ```cs
+NetworkController.main.CreateSession(/*session name*/);
+```
 
 #### NetworkOutMessage and NetworkInMessage
 
