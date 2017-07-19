@@ -48,14 +48,14 @@ Firstly, drag the Networking Prefab into the Scene, or create an empty game obje
 
 #### Connecting to a Server
 Connecting to a server is relatively simple. Simply drag in the provided Networking Prefab, or drag the Sharing Stage script onto an empty game object. In this, you should fill in the Server Address and Server Port areas in the inspector. If you want to set these values in your code, use the following inside of NetworkController.cs:
-```cs
+```csharp
 stage.Manager.SetServerConnectionInfo(/*server address*/,(byte)/*server port as int*/);
 ```
 
 #### Connecting to a Session
 Sessions are like the server's rooms. Each session holds and communicates with only those inside of it. This way, you can have multiple groups in their own sessions on the server without getting the interactions jumbled.
 Connecting to a session is as easy as inputting the following line of code
-```cs
+```csharp
 NetworkController.main.Join(/*session object*/);
 //or
 NetworkController.main.FindandJoin(/*session name*/);
@@ -65,7 +65,7 @@ NetworkController.main.FindandJoin();//uses the provided Default Session name
 These methods return true if they successfully connect to the session.
 
 Though the NDC Holographic Assistant does not allow users to create sessions, this is possible by using
- ```cs
+ ```csharp
 NetworkController.main.CreateSession(/*session name*/);
 ```
 
