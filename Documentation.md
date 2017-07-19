@@ -142,20 +142,24 @@ It is recommended that you have a basic understanding of coding in Unity before 
 ###### Sending Messages
 
 ###### Receiving Messages and Processing
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
 Written By JC Pyron (Blame me not the Devs for the awful documentation)
