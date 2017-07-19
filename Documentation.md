@@ -11,7 +11,6 @@ It is recommended that you have a basic understanding of coding in Unity before 
      4. [Service Scripts](#service-scripts)
      5. [Adding a Product to the List](#adding-a-product-to-the-list)
 3. [Designing a Menu](#designing-a-menu)
-    1. [Widgets](#widgets)
 4. [Online Connections](#online-connections)
 	1. [Connecting to a Server](#connecting-to-a-server)
   2. [Connecting to a Session](#connecting-to-a-session)
@@ -22,11 +21,13 @@ It is recommended that you have a basic understanding of coding in Unity before 
 
 ***
 ## DOTween
-  DOTween is a free add-on for Unity. It adds multiple methods and Classes designed to assist in creating fluid animations in scripts.
-  there are various Methods that can chain together to make custom animations in your script. For example, the following would move myObject to the point 1,2,3 in half a second after waiting 0.1 seconds using the InOutCubic Ease function:
+  DOTween is a free add-on for Unity. It adds multiple methods and Classes designed to assist in creating fluid animations in scripts. The most Prominent of which is the Tween class.
+  There are various Methods that can chain together to make custom animations in your script. For example, the following would move myObject to the point 1,2,3 in half a second after waiting 0.1 seconds using the InOutCubic Ease function:
   ```csharp
   myObject.transform.DOLocalMove(new Vector3(1,2,3),0.5f).SetDelay(0.1f).SetEase(Ease.InOutCubic);
   ```
+
+  _*ADDITIONS NEEDED!!!!!!*_
 #### [Easings](#http://easings.net/ "Ease Functions")
   Easings are functions that smooth the movement of objects. For example, InOutCubic gives a slow beginning and end, while the middle goes faster. \
   Click on the section title to see a list of Ease functions.
@@ -62,9 +63,11 @@ It is recommended that you have a basic understanding of coding in Unity before 
   In this section, add all of the parts not visible on the outside. The parts added to this section are disabled unless the product is selected to be serviced. This increases performance.
 ###### Remaining Values
   Provide a float that represents the scale of a product when in the selection screen. This will allow the program to scale the product appropriately based on its size.
-  Provide 3 floats that represent the rotation of a product so that it is angled properly in the selection screen. 
+  Provide 3 floats that represent the rotation of a product so that it is angled properly in the selection screen.
 #### Physical Part
   Each part and containers of parts must have a Physical Part script in order to appear in the Service menu. Her you must fill out the name, instructions on how to remove the part (assuming the other necessary parts are removed), animations, and the parts that need to be removed before this part.
+
+  The Physical Product has a list of parts which contains its children that contain a PhysicalPart script. If Part A has a child that is a part (Part B), then A has a list of parts that contains part B. This results in a Part Hierarchy. For example, In the Accuscan, PhysicalProduct.parts = { Metal Housing, Circuit Board, Brackets, Laser System, Shell Plate }; however, Brackets has children that are parts so PhysicalProduct.parts[2].parts = { BracketTR, BracketTL, ... }.
 ###### Editor Tools
   The "Actual Position Offset" is where the pointer will point to and "Product Rotation To Make Visible" is the rotation where the part is best seen. These values can be changed form the inspector, or if you check "Enable Editor Tools", you can move these points inside of the scene.
 ###### Animation
@@ -75,31 +78,31 @@ It is recommended that you have a basic understanding of coding in Unity before 
   In Servicing Tools, add to the array and select the tools needed for the job.\
   In Servicing Materials, add to the array and add the needed materials to replace the part.\
 #### Service Scripts
-The Service Scripts are used to create animations for each of the parts when they are removed during servicing. To start, create a script (Usually of the format: "ProductNameService") that inherits PhysicalProductAnimator. The Start method is where you designate the products layers and should initially look something like the following:
+The Service Scripts are used to create animations for each of the parts when they are removed during servicing. To start, create a script (Usually of the format: "ProductNameService") that inherits PhysicalProductAnimator. The Start method is where you designate the products layers (much like an onion has layers, if you want to see part A but it is be hind Part B, create an animation to remove Part B and Show Part A) and should initially look something like the following:
 ```csharp
 protected override void Start() {
         base.Start();
         physicalProduct.justMovedToThisLayer += delegate (PhysicalSceneObject THIS, bool down) {
-            if (down) { resetProduct(); }
+            if (down) { resetProduct(); }//THIS LINE MUST EXIST. It helps reset the product on a few occasions
             else {  }
-        };
-        physicalProduct.parts[1].justMovedToThisLayer += delegate (PhysicalSceneObject THIS, bool down) {
-            if (down){}
-            else{}
-         };
-    }
+  }  }
 ```
 
+
+_*ADDITIONS NEEDED!!!!!!*_
+
 #### Adding a Product to the List
+After a Product has been configured and all of the scripts have bee added, save the game object as a prefab by dragging the game object to the project window. Then, in the Assets/Resources folder select the DataStore Object. Press the Plus in the Products drop down, provide the requested information, drag in the new prefab, and select whether or not it can be serviced or demoed.
 
-
+\*Note that this is also the area you can add Tools that the technician can use.
 
 ## Designing a Menu
+In Unity designing a menu for the HoloLens is fairly straightforward and requires little additional effort compared to the Standard Unity UIs; however, there are a few things that should be known. \
 
-#### Widgets
-
-
-
+You should avoid putting a canvas inside of another canvas.\
+You can use the Prefabs in the Assets/Prefab/UI folder to keep with the theme, style, and interactions we have developed so far.\
+Remember that the UI should be in the World Space, Not Screen Space. If placed in the screen space, the user will not be able to interact with any of the objects because the HoloLens uses the Gaze direction and the UI would move with the screen.
+ 
 ## Online Connections
 Being able to share Holograms, whether in the same room or across the country, is a very interesting part of the HoloLens.
 This section will concentrate on connecting to a server, creating, sending, and receiving messages.
