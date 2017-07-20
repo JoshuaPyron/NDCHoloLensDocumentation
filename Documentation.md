@@ -19,7 +19,7 @@ It is recommended that you have a basic understanding of coding in Unity before 
 		1. [Sending Messages](#sending-messages)
 		2. [Receiving Messages and Processing](#receiving-messages-and-processing)
 
-***
+
 ## DOTween
   DOTween is a free add-on for Unity. It adds multiple methods and Classes designed to assist in creating fluid animations in scripts. The most Prominent of which is the Tween class.
   There are various Methods that can chain together to make custom animations in your script. For example, the following would move myObject to the point 1,2,3 in half a second after waiting 0.1 seconds using the InOutCubic Ease function:
@@ -53,7 +53,7 @@ It is recommended that you have a basic understanding of coding in Unity before 
     * WRL
     * SVG
 #### Physical Product
-  When the parts are all in place, drag PhysicalProduct.cs into the parent game object (the container of all of the parts).
+  When the parts are all in place, drag PhysicalProduct.cs into the parent game object (the container of all of the parts).\
   In the inspector, there should be 3 different sections, Service Animation, Demo Animation, and Disable When Minimized.
 ###### Service Animation
   If you wish to add animations to a product when it is selected for the service menu, add the animations here. For example, the front plate of the Accuscan is removed and placed into the back.
@@ -62,7 +62,7 @@ It is recommended that you have a basic understanding of coding in Unity before 
 ###### Disable When Minimized
   In this section, add all of the parts not visible on the outside. The parts added to this section are disabled unless the product is selected to be serviced. This increases performance.
 ###### Remaining Values
-  Provide a float that represents the scale of a product when in the selection screen. This will allow the program to scale the product appropriately based on its size.
+  Provide a float that represents the scale of a product when in the selection screen. This will allow the program to scale the product appropriately based on its size.\
   Provide 3 floats that represent the rotation of a product so that it is angled properly in the selection screen.
 #### Physical Part
   Each part and containers of parts must have a Physical Part script in order to appear in the Service menu. Her you must fill out the name, instructions on how to remove the part (assuming the other necessary parts are removed), animations, and the parts that need to be removed before this part.
@@ -82,15 +82,20 @@ It is recommended that you have a basic understanding of coding in Unity before 
   ```csharp
   protected override void Start() {
           base.Start();
-          physicalProduct.justMovedToThisLayer += delegate (PhysicalSceneObject THIS, bool down) {
+          physicalProduct.justMovedToThisLayer +=delegate (PhysicalSceneObject THIS, bool down) {
               if (down) { resetProduct(); }//THIS LINE MUST EXIST. It helps reset the product on a few occasions
               else {  }
     }  }
   ```
-
-
-  _*ADDITIONS NEEDED!!!!!!*_
-
+  When a part is in a new layer, be sure to add an animation for that part formatted like the following:
+  ```csharp
+  physicalProduct.parts[0]+=delegate (PhysicalSceneObject THIS, bool down) {
+      if (down) {  }
+      else {  }
+  }
+  ```
+  When down is true, that means that the transition is coming downward from the layer above. For example, the Laserscan's Laser system is below the shell, so moving from the shell to the Laser system would play the animation in the physicalProduct.parts[0] down section of the if statement. PhysicalProduct.justMovedToThisLayer is the highest layer and is dedicated to resetting the product to its original positions.
+ 
   See [UltrascanService.cs](Examples/UltrascanService.cs) for Reference.
 #### Adding a Product to the List
   After a Product has been configured and all of the scripts have bee added, save the game object as a prefab by dragging the game object to the project window. Then, in the Assets/Resources folder select the DataStore Object. Press the Plus in the Products drop down, provide the requested information, drag in the new prefab, and select whether or not it can be serviced or demoed.
@@ -142,24 +147,3 @@ It is recommended that you have a basic understanding of coding in Unity before 
 ###### Sending Messages
 
 ###### Receiving Messages and Processing
-\
-\
-\
-\
-\
-\
-\
-\
-\
-\
-\
-\
-\
-\
-\
-\
-\
-\
-\
-\
-Written By JC Pyron (Blame me, not the Devs, for the awful documentation)
