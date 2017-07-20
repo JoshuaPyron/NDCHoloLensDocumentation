@@ -12,13 +12,13 @@ It is recommended that you have a basic understanding of coding in Unity before 
      5. [Adding a Product to the List](#adding-a-product-to-the-list)
 3. [Designing a Menu](#designing-a-menu)
 4. [Online Connections](#online-connections)
-	1. [Connecting to a Server](#connecting-to-a-server)
-  2. [Connecting to a Session](#connecting-to-a-session)
-	2. [NetworkOutMessage and NetworkInMessage](#networkoutmessage-and-networkinmessage)
-	3. [Adding Custom Messages](#adding-custom-messages)
-		1. [Sending Messages](#sending-messages)
-		2. [Receiving Messages and Processing](#receiving-messages-and-processing)
-
+    1. [Connecting to a Server](#connecting-to-a-server)
+    2. [Connecting to a Session](#connecting-to-a-session)
+	  2. [NetworkOutMessage and NetworkInMessage](#networkoutmessage-and-networkinmessage)
+	  3. [Adding Custom Messages](#adding-custom-messages)
+		    1. [Sending Messages](#sending-messages)
+		    2. [Receiving Messages and Processing](#receiving-messages-and-processing)
+5. [Recommended Links](#recommended-links)
 
 ## DOTween
   DOTween is a free add-on for Unity. It adds multiple methods and Classes designed to assist in creating fluid animations in scripts. The most Prominent of which is the Tween class.
@@ -95,7 +95,10 @@ It is recommended that you have a basic understanding of coding in Unity before 
   }
   ```
   When down is true, that means that the transition is coming downward from the layer above. For example, the Laserscan's Laser system is below the shell, so moving from the shell to the Laser system would play the animation in the physicalProduct.parts[0] down section of the if statement. PhysicalProduct.justMovedToThisLayer is the highest layer and is dedicated to resetting the product to its original positions.
- 
+
+
+  Any custom animations for removing specific parts should be placed in its own method in this file. When setting up PhysicalPart, simply select the animation for that part.
+
   See [UltrascanService.cs](Examples/UltrascanService.cs) for Reference.
 #### Adding a Product to the List
   After a Product has been configured and all of the scripts have bee added, save the game object as a prefab by dragging the game object to the project window. Then, in the Assets/Resources folder select the DataStore Object. Press the Plus in the Products drop down, provide the requested information, drag in the new prefab, and select whether or not it can be serviced or demoed.
@@ -140,10 +143,12 @@ It is recommended that you have a basic understanding of coding in Unity before 
   NetworkController.main.CreateSession(/*session name*/);
   ```
 #### NetworkOutMessage and NetworkInMessage
-  Messages are sent in-between devices to communicate actions or provide data.
+  Messages are sent in-between devices to communicate actions or provide data. Making out messages is how you tell the other systems what you just did in the environment.
 
 #### Adding Custom Messages
 
 ###### Sending Messages
 
 ###### Receiving Messages and Processing
+
+## Recommended Links
