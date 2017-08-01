@@ -13,3 +13,9 @@
   c.	Product_IP is the IPv4 of the device that you want to be displayed on the Gauge Menu. If Simulate_Product_Data is True, you can simply leave this line alone.
 8.	Delete the DemoInfo file in the HoloLens (using the web browser)
 9.	In “Upload a file to this directory”, click “Choose File”, select the modified DemoInfo file, and click Upload.
+
+
+#### Resizer
+This is how you can reposition, rotate, and scale the menus.
+
+In the upper right hand corner of the menu, there should be a small box with a double sided arrow in the center. If clicked, the resizer box will turn on. The corners (cubes) are used to scale, the spheres are used to rotate, and dragging anywhere else in the box will move.
