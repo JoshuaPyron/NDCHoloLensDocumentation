@@ -1,6 +1,6 @@
 #Hello, I see you need my help.
 
-
+#### Setting up the needed Demo Information
 1.	Open the app at least once. Hopefully, we will put the latest build on it before you leave.
 2.	Place the two menus in the location you want them for the presentation.
 3.	Close the app by clicking on the exit button. If you simply do the “bloom” gesture, the values will not be saved, because the app will still be running in the background.
