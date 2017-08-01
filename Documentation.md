@@ -14,7 +14,6 @@ It is recommended that you have a basic understanding of coding in Unity before 
 4. [Online Connections](#online-connections)
     1. [Connecting to a Server](#connecting-to-a-server)
     2. [Connecting to a Session](#connecting-to-a-session)
-	  2. [NetworkOutMessage and NetworkInMessage](#networkoutmessage-and-networkinmessage)
 	  3. [Adding Custom Messages](#adding-custom-messages)
 		    1. [Sending Messages](#sending-messages)
 		    2. [Receiving Messages and Processing](#receiving-messages-and-processing)
@@ -142,10 +141,24 @@ It is recommended that you have a basic understanding of coding in Unity before 
    ```csharp
   NetworkController.main.CreateSession(/*session name*/);
   ```
-#### NetworkOutMessage and NetworkInMessage
-  Messages are sent in-between devices to communicate actions or provide data. Making out messages is how you tell the other systems what you just did in the environment.
-
 #### Adding Custom Messages
+  Messages are sent in-between devices to communicate actions or provide data. Making out messages is how you tell the other systems what you just did in the environment.\
+  Creating a message is done inside of the NetworkController.cs. First, add the new Message type to the SharedMessageType Enum. The method should look like the following:
+  ```csharp
+  public void MethodName(/*any data you wish to enter into your message*/){
+    if(canSend){
+      NetworkOutMessage nm = CreateMessage(SharedMessageType.Name);
+      nm.Write(Data);
+      nm.Write(Data);
+      ...
+      this.serverConnection.Broadcast(nm, MessagePriority.Immediate, MessageReliability.ReliableSequenced, MessageChannel.Avatar);
+    }
+  }
+  ```
+  Then inside of the OnMessageRecieved method, add the new Enum to a case in the switch statement. The case will execute when a message of this type is recieved.\
+  There are some helper methods to clean up you code, like AppendVector3, ReadVector3, AppendTransform, etc.\
+  You can change the Enums in the ``this.serverConnection...`` statement in order to ensure that the other devices catch and process then message, or send the message more frequently.
+
 
 ###### Sending Messages
 
