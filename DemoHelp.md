@@ -1,6 +1,6 @@
 # Hello, I see you need my help.
 
-#### Gestures
+### Gestures
 Gaze - This is the direction where your head is facing, represented by a cursor.\
 Tap - This gesture is used to click on objects. This is done by holding up one finger, with your thumb resting across you other fingers, then tapping you thumb with your extended finger.\
 Pinch - This is used to drag objects. This is done by making an L with you thumb and forefinger, then pressing the two together. You can then drag an object to the desired location and release it by separating your thumb and forefinger.\
@@ -10,7 +10,7 @@ For practice (and better explanations), open the "Learn Gestures" app on your Ho
 
 Remember to be very deliberate with your actions.  
 
-#### Setting up the needed Demo Information
+### Setting up the needed Demo Information
 1.	Open the app at least once. Hopefully, we will put the latest build on it before you leave.
 2.	Place the two menus in the location you want them for the presentation.
 3.	Close the app by clicking on the exit button. If you simply do the “bloom” gesture, the values will not be saved, because the app will still be running in the background.
@@ -25,7 +25,7 @@ Remember to be very deliberate with your actions.
 9.	In “Upload a file to this directory”, click “Choose File”, select the modified DemoInfo file, and click Upload.
 
 
-#### Resizer
+### Resizer
 This is how you can reposition, rotate, and scale the menus.
 
 In the upper right hand corner of the menu, there should be a small box with a double sided arrow in the center. If clicked, the resizer box will turn on. The corners (cubes) are used to scale, the spheres are used to rotate, and dragging anywhere else in the box will move.
