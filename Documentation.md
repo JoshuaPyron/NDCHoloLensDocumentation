@@ -3,8 +3,6 @@ Welcome to the NDC HoloLens Documentation! \
 Click [here](User_Help.md "User Manual") if you are looking for help with using the NDC Holographic Assistant.\
 It is recommended that you have a basic understanding of coding in Unity before looking at this documentation.
 
-
-
 1. [DOTween (animations)](#dotween)
 2. [Adding Products](#adding-products)
      1. [Model Requirements](#model-requirements)
@@ -40,19 +38,12 @@ It is recommended that you have a basic understanding of coding in Unity before 
   * It is recommended that the product's prefab be structured using various empty game objects to sort the parts
   * See the configured Prefabs in the Assets/"Models(3d)"
   * The models must be in one of the following formats:
-    * OBJ
-    * FBX
-    * STL
-    * DAE
-    * 3DS
-    * X3D
-    * ABC
-    * BVH
-    * DXF
-    * SKP
-    * PLY
-    * WRL
-    * SVG
+    * .FBX
+    * .DAE (Collada)
+    * .3DS
+    * .DXF
+    * .OBJ
+    * .SKP
 #### Physical Product
   When the parts are all in place, drag PhysicalProduct.cs into the parent game object (the container of all of the parts).\
   In the inspector, there should be 3 different sections, Service Animation, Demo Animation, and Disable When Minimized.
