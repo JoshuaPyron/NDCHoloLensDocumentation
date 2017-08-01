@@ -1,4 +1,4 @@
-#Hello, I see you need my help.
+# Hello, I see you need my help.
 
 #### Setting up the needed Demo Information
 1.	Open the app at least once. Hopefully, we will put the latest build on it before you leave.
