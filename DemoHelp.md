@@ -36,7 +36,7 @@ In the upper right hand corner of the menu, there should be a small box with a d
 
 ### Manuals
 At any time, you can pull up a manual for the product you are looking at. To do this, click on the manuals Button in the Quick Actions Menu and select the manual you want.\
-![alt text](https://github.com/JoshuaPyron/NDCHoloLensDocumentation/blob/master/Images/Manual_Button.png "Manual Button")
+![alt text](Images/Manual_Button.png "Manual Button")
 
 ## Menus
 ### Selection Menu
@@ -56,5 +56,5 @@ In this Menu, you can choose a part to service, step through servicing any part,
 
 ### Sharing
 By clicking on the sharing icon in the Quick Actions Menu, you can select a session to join.\
-![alt text](https://github.com/JoshuaPyron/NDCHoloLensDocumentation/blob/master/Images/Sharing_Button.png "Sharing Button")\
+![alt text](Images/Sharing_Button.png "Sharing Button")\
 If you join with a separate HoloLens, when one person performs an action, the other HoloLens will register that action.

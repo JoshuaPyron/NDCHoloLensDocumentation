@@ -39,7 +39,7 @@ It is recommended that you have a pretty decent understanding of coding in Unity
 	2. [Creating a new Message Type](#creating-a-new-message-type)
 	3. [Sending a Message](#sending-a-message)
 	4. [Reading the Received Message](#reading-the-received-message)
-	
+
 5. [Building The Application](#building-the-application)
 6. [Misc](#misc)
 	1. [High Quality Picture Taking](#high-quality-picture-taking)
@@ -82,7 +82,7 @@ The product will rotate to this rotation when selected either in the demo or ser
 Each part and containers of parts must have a Physical Part script in order to appear in the Service menu. Here you must fill out the name, instructions on how to remove the part (for servicing), animations, and the parts that need to be removed before this part (for servicing).
 
 ###### Editor Tools
-![alt text](https://github.com/JoshuaPyron/NDCHoloLensDocumentation/blob/master/Images/EditorToolsScreenShot.png "Editor Tools")
+![alt text](Images/EditorToolsScreenShot.png "Editor Tools")
 The Physical Parts script has a set of editor tools to help you set up the part's settings. to enable it beck the "enable editor tools" checkbox.  The position handle will help you set the `Actual Position Offset` (linkplz).  And the Rotation handle will help you set the `Product Rotation To Make This Part Visible`(linkplz).  Once you have rotated the product to an angle where the part is very visible, click the `Set Part Visible Product Rotation` button right below the checkbox.  Additionally you can press the `Auto Get Actual Position Offset` to set the `Actual Position Offset` calculated using the average center of the part's mesh bounds.
 ###### Animation
 To animate the removal and replacing of a part as a user goes down the hiearchy of parts,  you should select a `PPAnimationModule` by pressing on the `+` symbol next to `Animation`.  The Transition in animation module will have the part smoothly fade out and move out in one way or fade in move in to its position.  Make sure that all renderers within the part are using fadeable materials so they can properly fade in and out.
@@ -115,20 +115,20 @@ Attachments are addon models to the product that can be viewed in the demo menu.
   When down is true, that means that the transition is coming downward from the layer above. For example, the Laserscan's Lens gameobject is below the Laser System, so moving from the Laser System to the Lens would play the animation in the physicalProduct.parts[1].parts[0] down section of the if statement. Moving back to the Laser System will play the animation in the physicalProduct.parts[1] else statement. physicalProduct.justMovedToThisLayer is the highest layer and moving down to the layer is dedicated to resetting the product and its parts to their original positions.
   Also be sure to set the basicMovePosition variable in the Start method. This controls the distance traveled by a part when one of the basic methods are chosen in the remove step section of the Physical Part set up. By default its value is set to 2' however, some products require larger or smaller distances, this is where you can set the value of the basic move.
   **Note:** be sure the first line of the Start method is ``base.Start();``
-  
+
   See [UltrascanService.cs](Examples/UltrascanService.cs) and [LaserSpeedService.cs](Examples/LaserSpeedService.cs) for Reference.
 
 ##### Custom Remove Animations
   Any custom animations for removing specific parts should be placed in its own method in this file. When setting up PhysicalPart, simply select the animation for that part. For example, in [LaserSpeedService.cs](Examples/LaserSpeedService.cs) removing the Housing and Circuitry is preformed by assigning the following method to the remove step of a part:
   ```csharp
   public void removeHousingAndCircuits() {  
-  	steps.Add(new Step(new PhysicalPart[] { 
-  		physicalProduct.parts[2], physicalProduct.parts[3] }, 
+  	steps.Add(new Step(new PhysicalPart[] {
+  		physicalProduct.parts[2], physicalProduct.parts[3] },
   		HouseCircuit.DOLocalMoveZ(.03f, 1).SetEase(Ease.InOutCubic)
 	 ));
   }
   ```
- 
+
 ##### Step Class
 The step class contains the parts and animations in a step, as well as controlling which animation to play and in what order. When [creating a custom remove animation](#custom-remove-animations), you will need to create a Step object and add it to the list ``steps``.
 There are 8 constructors for the Step class, but they are all fairly similar and follow this format:\
@@ -302,7 +302,7 @@ Once you have something you wish to build, the steps are fairly straight forward
 11. When complete, a window will open to the App folder. Open the generated SLN.
 12. In the dropdowns at the top of the window, select Release and x86
 13. If the HoloLens is connected to your computer with a cable, select "Local Machine" in the dropdown next to play button and skip step 14. If not, select "Remote Machine".
-14. In your HoloLens, go to Settings>Network & Internet>Advanced Options and input your IPv4 address into the window that appeared in Visual Studio. 
+14. In your HoloLens, go to Settings>Network & Internet>Advanced Options and input your IPv4 address into the window that appeared in Visual Studio.
 	1. If no window appeared, right-click your project in the Solution Explorer, select Properties, and go to the Debug tab. Input the IPv4 address into the field "Remote machine".
 15. At this point, Visual Studio should be asking for a pin. In you HoloLens, go to Settings>Update & Security>For Developers>Paired Devices and click on the "Pair" button. Input the pin into Visual Studio. **NOTE:** DO NOT CLOSE THE DISPLAY SHOWING YOUR PIN UNTIL YOU HAVE FULLY CONNECTED.
 16. Finally, hit the play button and Visual Studio should install your app onto your HoloLens.
