@@ -19,7 +19,7 @@ For practice (and better explanations), open the "Learn Gestures" app on your Ho
 Remember to be very deliberate with your actions.
 
 ## Menus and Navigation
-#### Selection Menu
+### Selection Menu
 This is the menu where you select the product you wish to work with and is divided into 3 sub-menus: Favorites, Categories, and AZ.
 ##### Favorites Menu
 This is the menu that the application will boot to. The menu contains every product the is inside of the application in alphabetical order. We intended to have a system that determines which products you have looked at recently or scan your network for any devices you have and place them first; however, that was never implemented.
