@@ -11,18 +11,18 @@ The goal of this Document is to help you get acquainted with the Unity interface
 ## Windows
 Unity has a variety of windows, all with a different function. The following are the most commonly used windows.
 ### Hierarchy
-![alt text](Images\BasicIntro\HierarchyWindow.png "Hierarchy Window")
+![alt text](Images/BasicIntro/HierarchyWindow.png "Hierarchy Window")
 
 ### Inspector
-![alt text](Images\BasicIntro\InspectorWindow.png "Inspector Window")
+![alt text](Images/BasicIntro/InspectorWindow.png "Inspector Window")
 
 ### Scene
-![alt text](Images\BasicIntro\SceneWindow.png "Scene Window")
+![alt text](Images/BasicIntro/SceneWindow.png "Scene Window")
 
 ### Console
-![alt text](Images\BasicIntro\ConsoleWindow.png "Console Window")
+![alt text](Images/BasicIntro/ConsoleWindow.png "Console Window")
 
 ### Project
-![alt text](Images\BasicIntro\ProjectWindow.png "Project Window")
+![alt text](Images/BasicIntro/ProjectWindow.png "Project Window")
 
 ## Movement
