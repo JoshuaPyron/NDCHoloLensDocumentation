@@ -32,7 +32,8 @@ First, be sure to follow the steps to [set up the HoloLens for development](Docu
 
 ### Resizer
 This is how you can reposition, rotate, and scale the menus.\
-In the upper right hand corner of the menu, there should be a small box with a double sided arrow in the center. ![alt text](Images/Move_Icon_Black.png "Move Icon") If clicked, the resizer box will turn on. The corners (cubes) are used to scale, the spheres are used to rotate, and dragging anywhere else in the box will move.
+In the upper right hand corner of the menu, there should be a small box with a double sided arrow in the center. If clicked, the resizer box will turn on. The corners (cubes) are used to scale, the spheres are used to rotate, and dragging anywhere else in the box will move.
+![alt text](Images/Move_Icon_Black.png "Move Icon") 
 
 ### Manuals
 At any time, you can pull up a manual for the product you are looking at. To do this, click on the manuals Button in the Quick Actions Menu and select the manual you want.\
