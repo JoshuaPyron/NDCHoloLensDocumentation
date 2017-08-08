@@ -3,7 +3,7 @@ Welcome and thank you for using our product!
 Click [here](Documentation.md) if you are looking for the documentation for coding the NDC Holographic Assistant.
 
 1. [Gestures](#gestures)
-2. [Menus and Navigation](#menus-and-navigation)
+2. [Menus](#menus)
     1. [Favorites Menu](#favorites-menu)
     2. [Category Menu](#category-menu)
     3. [AZ Menu](#az-menu)
@@ -22,7 +22,7 @@ For practice (and better explanations), open the "Learn Gestures" app on your Ho
 
 Remember to be very deliberate with your actions.
 
-## Menus and Navigation
+## Menus
 ### Selection Menu
 This is the menu where you select the product you wish to work with and is divided into 3 sub-menus: Favorites, Categories, and AZ.
 ##### Favorites Menu
