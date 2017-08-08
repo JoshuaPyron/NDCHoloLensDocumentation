@@ -11,6 +11,8 @@ It is recommended that you have a pretty decent understanding of coding in Unity
 	2. [Physical Product](#physical-product)
 	3. [Physical Part](#physical-part)
 	4. [Service Scripts](#service-scripts)
+		1. [Custom Remove Animations](#custom-remove-animations)
+		2. [Steps](#step-class)
 	5. [Adding a Product to the List](#adding-a-product-to-the-list)
 2. [Designing a Menu](#designing-a-menu)
 	1. [Gameobject Structure](#gameobject-structure)
@@ -111,7 +113,12 @@ Attachments are addon models to the product that can be viewed in the demo menu.
   }
 ```
   When down is true, that means that the transition is coming downward from the layer above. For example, the Laserscan's Lens gameobject is below the Laser System, so moving from the Laser System to the Lens would play the animation in the physicalProduct.parts[1].parts[0] down section of the if statement. Moving back to the Laser System will play the animation in the physicalProduct.parts[1] else statement. physicalProduct.justMovedToThisLayer is the highest layer and moving down to the layer is dedicated to resetting the product and its parts to their original positions.
+  Also be sure to set the basicMovePosition variable in the Start method. This controls the distance traveled by a part when one of the basic methods are chosen in the remove step section of the Physical Part set up. By default its value is set to 2' however, some products require larger or smaller distances, this is where you can set the value of the basic move.
+  **Note:** be sure the first line of the Start method is ``base.Start();``
+  
+  See [UltrascanService.cs](Examples/UltrascanService.cs) and [LaserSpeedService.cs](Examples/LaserSpeedService.cs) for Reference.
 
+##### Custom Remove Animations
   Any custom animations for removing specific parts should be placed in its own method in this file. When setting up PhysicalPart, simply select the animation for that part. For example, in [LaserSpeedService.cs](Examples/LaserSpeedService.cs) removing the Housing and Circuitry is preformed by assigning the following method to the remove step of a part:
   ```csharp
   public void removeHousingAndCircuits() {  
@@ -121,8 +128,20 @@ Attachments are addon models to the product that can be viewed in the demo menu.
 	 ));
   }
   ```
+ 
+##### Step Class
+The step class contains the parts and animations in a step, as well as controlling which animation to play and in what order. When [creating a custom remove animation](#custom-remove-animations), you will need to create a Step object and add it to the list ``steps``.
+There are 8 constructors for the Step class, but they are all fairly similar and follow this format:\
+``Step(PhysicalPart/*[]*/ part, Tween/*[]*/ animation/*,Vector3 preferredProductRotation/*)``
 
-  See [UltrascanService.cs](Examples/UltrascanService.cs) and [LaserSpeedService.cs](Examples/LaserSpeedService.cs) for Reference.
+The default value of "simultaneous" is false. This means that each Tween in the array of animations will be played in the order of the array (0 first, 1 second, etc). If the value "simultaneous" is set to true, all animations will play together at the same time.
+```csharp
+Step s = new Step(/*part*/,new Tween[]{/*animation 1/*, /*animation 2/*, /*animation 3*/});
+s.simultaneous = true;
+steps.Add(s);
+```
+When simultaneous is true, the Step will loop once the Tween at the end of the array ends. Because of this, it is a good idea to put the longest animation at the end of the array.
+
 #### Adding a Product to the List
   After a Product has been configured and all of the scripts have been added, save the game object as a prefab by dragging the game object to the project window. Then, in the Assets/Resources folder select the DataStore Object. Press the Plus in the Products drop down, provide the requested information, drag in the new prefab, and select whether or not it can be serviced or demoed.
 
