@@ -1,6 +1,6 @@
 # Hello, I see you need my help.
 
-### Gestures
+## Gestures
 Gaze - This is the direction where your head is facing, represented by a cursor.\
 Tap - This gesture is used to click on objects. This is done by holding up one finger, with your thumb resting across you other fingers, then tapping you thumb with your extended finger.\
 Pinch - This is used to drag objects. This is done by making an L with you thumb and forefinger, then pressing the two together. You can then drag an object to the desired location and release it by separating your thumb and forefinger.\
@@ -10,7 +10,7 @@ For practice (and better explanations), open the "Learn Gestures" app on your Ho
 
 Remember to be very deliberate with your actions.  
 
-### Setting up the needed Demo Information
+## Setting up the needed Demo Information
 1. Plug a computer into the router.
 2. Open the HoloLens, got to Settings>Network & Internet and connect to the "HoloLensDemo" Network.
 3. Wait for it to successfully connect, then open "Advanced Options" in the same menu
