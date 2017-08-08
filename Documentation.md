@@ -77,7 +77,7 @@ The product will rotate to this rotation when selected either in the demo or ser
 Each part and containers of parts must have a Physical Part script in order to appear in the Service menu. Here you must fill out the name, instructions on how to remove the part (for servicing), animations, and the parts that need to be removed before this part (for servicing).
 
 ###### Editor Tools
-TODO: add screenshot of editor tools
+![alt text](https://github.com/JoshuaPyron/NDCHoloLensDocumentation/blob/master/Images/EditorToolsScreenShot.png "Editor Tools")
 The Physical Parts script has a set of editor tools to help you set up the part's settings. to enable it beck the "enable editor tools" checkbox.  The position handle will help you set the `Actual Position Offset` (linkplz).  And the Rotation handle will help you set the `Product Rotation To Make This Part Visible`(linkplz).  Once you have rotated the product to an angle where the part is very visible, click the `Set Part Visible Product Rotation` button right below the checkbox.  Additionally you can press the `Auto Get Actual Position Offset` to set the `Actual Position Offset` calculated using the average center of the part's mesh bounds.
 ###### Animation
 To animate the removal and replacing of a part as a user goes down the hiearchy of parts,  you should select a `PPAnimationModule` by pressing on the `+` symbol next to `Animation`.  The Transition in animation module will have the part smoothly fade out and move out in one way or fade in move in to its position.  Make sure that all renderers within the part are using fadeable materials so they can properly fade in and out.
