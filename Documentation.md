@@ -259,9 +259,7 @@ Next to do something when the message is received, you must add a case to the sw
 
 ## Misc
 ### High Quality Picture Taking
-The aweful hololens camera and low-resolution screen mean that screenshots taken with the hololens are pretty aweful.
-
-So here's a clever way I devised to take high quality pictures of our app:  The screenshots of the program were taken using an asset called "Transparency Capture" [link](https://www.assetstore.unity3d.com/en/#!/content/509).  The images gotten from this were overlayed onto decent quality pictures taken with my phone in a picture editing program where both images were rescaled and then the whole thing is cropped to a good size.
+The terrible hololens camera and low-resolution screen mean that screenshots taken with the hololens are pretty awful.
 
 1. Take some pictures with a camera or phone of where you want the app to be overlayed over.
 2. Play the app and maximize the game window in unity.  Keep an inspector window open and locked onto the HoloLensCamera gameobject.
