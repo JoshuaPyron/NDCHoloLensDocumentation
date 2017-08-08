@@ -1,37 +1,50 @@
-# NDC Holographic Assistant
-Welcome to the NDC HoloLens Documentation! \
-Click [here](User_Help.md "User Manual") if you are looking for help with using the NDC Holographic Assistant.\
-It is recommended that you have a basic understanding of coding in Unity before looking at this documentation.
+NDC Holographic Assistant
+======================
 
-1. [DOTween (animations)](#dotween)
-2. [Adding Products](#adding-products)
-     1. [Model Requirements](#model-requirements)
-     2. [Physical Product](#physical-product)
-     3. [Physical Part](#physical-part)
-     4. [Service Scripts](#service-scripts)
-     5. [Adding a Product to the List](#adding-a-product-to-the-list)
-3. [Designing a Menu](#designing-a-menu)
-4. [Online Connections](#online-connections)
-    1. [Connecting to a Server](#connecting-to-a-server)
-    2. [Connecting to a Session](#connecting-to-a-session)
-	  3. [Adding Custom Messages](#adding-custom-messages)
-		    1. [Sending Messages](#sending-messages)
-		    2. [Receiving Messages and Processing](#receiving-messages-and-processing)
-5. [Recommended Links](#recommended-links)
+Welcome to the NDC HoloLens Documentation written by Marc Guiselin and Joshua Pyron (JC), the intern programmers who worked on this project!
 
-## DOTween
-  DOTween is a free add-on for Unity. It adds multiple methods and Classes designed to assist in creating fluid animations in scripts. The most Prominent of which is the Tween class.
-  There are various Methods that can chain together to make custom animations in your script. For example, the following would move myObject to the point 1,2,3 in half a second after waiting 0.1 seconds using the InOutCubic Ease function:
-  ```csharp
-  myObject.transform.DOLocalMove(new Vector3(1,2,3),0.5f).SetDelay(0.1f).SetEase(Ease.InOutCubic);
-  ```
+Click [here](User_Help.md "User Manual") if you are looking for help with using the NDC Holographic Assistant.
+It is recommended that you have a pretty decent understanding of coding in Unity before looking at this documentation.
 
-  _*ADDITIONS NEEDED!!!!!!*_
-#### [Easings](#http://easings.net/ "Ease Functions")
-  Easings are functions that smooth the movement of objects. For example, InOutCubic gives a slow beginning and end, while the middle goes faster. \
-  Click on the section title to see a list of Ease functions.
+1. [Adding Products](#adding-products)
+	1. [Model Requirements](#model-requirements)
+	2. [Physical Product](#physical-product)
+	3. [Physical Part](#physical-part)
+	4. [Service Scripts](#service-scripts)
+	5. [Adding a Product to the List](#adding-a-product-to-the-list)
+2. [Designing a Menu](#designing-a-menu)
+	1. [Gameobject Structure](#gameobject-structure)
+	2. [Menu Structure - Common Menus](#menu-structure-common-menus)
+	3. [Menu Structure - Primary Menus](#menu-structure-primary-menus)
+	4. [The Resizer](#the-resizer)
+	4. [Cursor Modifier](#cursor-modifier)
+3. [Classes, Scripts, and Libraries oh my!](#classes-scripts-and-libraries-oh-my)
+	1. [MonoBehaviourPlus](#monobehaviourplus)
+	2. [Advanced Inspector](#advanced-inspector-asset-store-link)
+	3. [DOTween](#dotween-asset-store-link)
+	4. [The Datastore](#the-datastore)
+	5. [The HP UI Extension Classes](#the-hp-ui-extension-classes)
+		1. [HPButton](#hpbutton)
+		2. [HPPrettyButton](#hpprettybutton)
+		3. [HPQuickActionsButton](#hpquickactionsbutton)
+		4. [HPRadioButtonList](#hpradiobuttonlist)
+		5. [HPVerticalScrollRect/HPScrollbar](#hpverticalscrollrecthpscrollbar)
+	6. [Utilities](#utilities)
+	7. [TextMesh Pro](#textmesh-pro-asset-store-link)
+	8. [ProBuilder Basic](#probuilder-basic-asset-store-link)
+4. [Networked UI Sharing](#networked-ui-sharing)
+	1. [Button Press Syncing](#button-press-syncing)
+	2. [Creating a new Message Type](#creating-a-new-message-type)
+	3. [Sending a Message](#sending-a-message)
+	4. [Reading the Received Message](#reading-the-received-message)
+5. [Misc](#misc)
+	1. [High Quality Picture Taking](#high-quality-picture-taking)
+6. [Recommended Links](#recommended-links)
 
 ## Adding Products
+
+We highly suggest that after reading this you take a look at how the "Accuscan 6050" prefab is put together, and try to make your own example product to understand how our part heiarchy and service system work.  Let's be honest here, JC :)  Its pretty confusing, especially the service system, but it works very well.
+
 #### Model Requirements
   * The Product will be assembled in Unity
   * Each part must be its own model
@@ -44,48 +57,56 @@ It is recommended that you have a basic understanding of coding in Unity before 
     * .DXF
     * .OBJ
     * .SKP
-#### Physical Product
-  When the parts are all in place, drag PhysicalProduct.cs into the parent game object (the container of all of the parts).\
-  In the inspector, there should be 3 different sections, Service Animation, Demo Animation, and Disable When Minimized.
-###### Service Animation
-  If you wish to add animations to a product when it is selected for the service menu, add the animations here. For example, the front plate of the Accuscan is removed and placed into the back.
-###### Demo Animation
-  If you wish to develop an animation that the product will play when demoed, place it here, for example the Ultrascan plays a small animation of it disassembling and reassembling.
-###### Disable When Minimized
-  In this section, add all of the parts not visible on the outside. The parts added to this section are disabled unless the product is selected to be serviced. This increases performance.
-###### Remaining Values
-  Provide a float that represents the scale of a product when in the selection screen. This will allow the program to scale the product appropriately based on its size.\
-  Provide 3 floats that represent the rotation of a product so that it is angled properly in the selection screen.
-#### Physical Part
-  Each part and containers of parts must have a Physical Part script in order to appear in the Service menu. Her you must fill out the name, instructions on how to remove the part (assuming the other necessary parts are removed), animations, and the parts that need to be removed before this part.
 
-  The Physical Product has a list of parts which contains its children that contain a PhysicalPart script. If Part A has a child that is a part (Part B), then A has a list of parts that contains part B. This results in a Part Hierarchy. For example, In the Accuscan, PhysicalProduct.parts = { Metal Housing, Circuit Board, Brackets, Laser System, Shell Plate }; however, Brackets has children that are parts so PhysicalProduct.parts[2].parts = { BracketTR, BracketTL, ... }.
+> **Note:** Keep in mind the product prefab's local rotation and position will be set to 0,0,0 when it is instantiated so it's a good idea to keep your product's prefab rotated and positioned at 0,0,0 on the origin, and use a container object to rotate and center the product.
+
+#### Physical Product
+For any new product, start out with an empty gameobject centered on the origin with a rotation of 0,0,0 with a `PhysicalProduct` component added.
+###### Service Animation (dropdown)
+  If you wish to play animations on a product when it is selected from the selection menu setup your events to trigger that animation to play here.  For example, when the Accuscan is selected and opened up in servicing, it plays an animation that removes the front plate.
+###### Demo Animation (variable in demo dropdown)
+  If you wish to add an animation that can be played in the demo menu, place it here, for example the Ultrascan plays a small animation of it disassembling and reassembling.
+###### Disable When Minimized (variable)
+The gameobjects added to this array are disabled unless the product is selected to be serviced or demoed. This increases performance.
+###### Selected scale amount (variable)
+Used to fine tune the scale of the product when selected.  If left at zero, the product scale will be automatically calculated from its mesh bounds.
+###### Selected Start rotation (variable)
+The product will rotate to this rotation when selected either in the demo or service menu.  Basically just pick a rotation that looks good.  Try to vary this rotation between different products.
+
+#### Physical Part
+Each part and containers of parts must have a Physical Part script in order to appear in the Service menu. Here you must fill out the name, instructions on how to remove the part (for servicing), animations, and the parts that need to be removed before this part (for servicing).
+
 ###### Editor Tools
-  The "Actual Position Offset" is where the pointer will point to and "Product Rotation To Make Visible" is the rotation where the part is best seen. These values can be changed form the inspector, or if you check "Enable Editor Tools", you can move these points inside of the scene.
+TODO: add screenshot of editor tools
+The Physical Parts script has a set of editor tools to help you set up the part's settings. to enable it beck the "enable editor tools" checkbox.  The position handle will help you set the `Actual Position Offset` (linkplz).  And the Rotation handle will help you set the `Product Rotation To Make This Part Visible`(linkplz).  Once you have rotated the product to an angle where the part is very visible, click the `Set Part Visible Product Rotation` button right below the checkbox.  Additionally you can press the `Auto Get Actual Position Offset` to set the `Actual Position Offset` calculated using the average center of the part's mesh bounds.
 ###### Animation
-  Drag TransitionInPPAnimationModule.cs, This give you some options to remove this part quickly, inside of the service menu before selecting a part to service.
+To animate the removal and replacing of a part as a user goes down the hiearchy of parts,  you should select a `PPAnimationModule` by pressing on the `+` symbol next to `Animation`.  The Transition in animation module will have the part smoothly fade out and move out in one way or fade in move in to its position.  Make sure that all renderers within the part are using fadeable materials so they can properly fade in and out.
 ###### Service Part Animation
-  In the Remove Steps array, add all of the parts that must be removed before this part, in the order they must be removed. For example, the circuit board on the Accuscan has Bolts at index 0 and the plate at index 1.\
-  In Populate Step, place the animation to be played to remove the part. To do this, click the plus and drag and drop the game object that has the service script into the new event. Then select the animation method from the list (This will be covered further in the [Service Scripts](#service-scripts) section). If you do not wish to develop your own animations for a part, PhysicalProductAnimator has some default basic animations you can choose from.\
-  In Servicing Tools, add to the array and select the tools needed for the job.\
-  In Servicing Materials, add to the array and add the needed materials to replace the part.\
+In the Remove Steps array, add all of the parts that must be removed before this part, in the order they must be removed. For example, the circuit board on the Accuscan has Bolts at index 0 and the plate at index 1.
+In Populate Step, place the animation to be played to remove the part. To do this, click the plus and drag and drop the game object that has the service script into the new event. Then select the animation method from the list (This will be covered further in the [Service Scripts](#service-scripts) section). If you do not wish to develop your own animations for a part, PhysicalProductAnimator has some default basic animations you can choose from.
+In Servicing Tools, add to the array and select the tools needed for the job.
+In Servicing Materials, add to the array and add the needed materials to replace the part.
+
+#### Attachments
+Attachments are addon models to the product that can be viewed in the demo menu.  Create an "Attachments" gameobject in your prefab and put them all in there.  Once you have created your attachment models and placed them in your prefab, go into your prefab's physical product script, open the demo dropdown, and add your attachment to the demo attachments list.  Again look at the Accuscan 6050 model to see how this was done and what settings were used.
+
 #### Service Scripts
   The Service Scripts are used to create animations for each of the parts when they are removed during servicing. To start, create a script (Usually of the format: "ProductNameService") that inherits PhysicalProductAnimator. The Start method is where you designate the products layers (much like an onion has layers, if you want to see part A but it is be hind Part B, create an animation to remove Part B and Show Part A) and should initially look something like the following:
-  ```csharp
+```csharp
   protected override void Start() {
           base.Start();
           physicalProduct.justMovedToThisLayer +=delegate (PhysicalSceneObject THIS, bool down) {
               if (down) { resetProduct(); }//THIS LINE MUST EXIST. It helps reset the product on a few occasions
               else {  }
     }  }
-  ```
+```
   When a part is in a new layer, be sure to add an animation for that part formatted like the following:
-  ```csharp
+```csharp
   physicalProduct.parts[0]+=delegate (PhysicalSceneObject THIS, bool down) {
       if (down) {  }
       else {  }
   }
-  ```
+```
   When down is true, that means that the transition is coming downward from the layer above. For example, the Laserscan's Laser system is below the shell, so moving from the shell to the Laser system would play the animation in the physicalProduct.parts[0] down section of the if statement. PhysicalProduct.justMovedToThisLayer is the highest layer and is dedicated to resetting the product to its original positions.
 
 
@@ -95,66 +116,160 @@ It is recommended that you have a basic understanding of coding in Unity before 
 #### Adding a Product to the List
   After a Product has been configured and all of the scripts have bee added, save the game object as a prefab by dragging the game object to the project window. Then, in the Assets/Resources folder select the DataStore Object. Press the Plus in the Products drop down, provide the requested information, drag in the new prefab, and select whether or not it can be serviced or demoed.
 
-  \*Note that this is also the area you can add Tools that the technician can use.
+> **Note:**  that this is also the area you can add Tools that the technician can use.
 
 ## Designing a Menu
-  In Unity designing a menu for the HoloLens is fairly straightforward and requires little additional effort compared to the Standard Unity UIs; however, there are a few things that should be known. \
+  In Unity designing a menu for the HoloLens is fairly straightforward and requires little additional effort compared to the Standard Unity UIs; however, there are a few things that should be known:
 
-  You should avoid putting a canvas inside of another canvas.\
-  You can use the Prefabs in the Assets/Prefab/UI folder to keep with the theme, style, and interactions we have developed so far.\
-  Remember that the UI should be in the World Space, Not Screen Space. If placed in the screen space, the user will not be able to interact with any of the objects because the HoloLens uses the Gaze direction and the UI would move with the screen.
+* You should avoid putting a canvas inside of another canvas.
+* You can use the Prefabs in the Assets/Prefab/UI folder and copy and paste stuff from the various menus to keep with the theme, style, and interactions we have developed so far.
+* UIs should be set to render in world space and scaled to a similar size as to the other menus.
+* The workflow that I (Marc, the primary designer and UI programmer) used to design all the menus was to first design it in affinity designer, my graphical design software of choice, and then make it in unity.  You can find these designs in the "prototypes, designs and sketches" folder of the project repo.  I highly recommend using those designs and continuing this workflow. It's also then very easy to export the textures and icons designed right into the project.
 
-## Online Connections
-  Being able to share Holograms, whether in the same room or across the country, is a very interesting part of the HoloLens.
-  This section will concentrate on connecting to a server, creating, sending, and receiving messages.
+### Gameobject Structure
+* Game Managers (Various gameobjects with only scripts attached to control things like input, voice commands, debug tools, etc)
+* Hololens Camera
+* Dynamic UIs (this contains all the important menus.  this gameobject is positioned in front of the camera when the app starts)
+  * Gauge Live Data canvas (displays live data from gauge. Currently positioned here for the demo)
+  * Container
+     * Resizer (A simple prefab for easy resizing of menus. More about that [here](linkplz))
+     * Common Menus (Contains menus shared by the different menu states)
+         * Quick actions menu (Menu with big circular button that allways stays to the right of the menu)
+         * Black Background (tweened to different positions for each menu)
+         * Side Navigation Menu (A side menu on the right. Currently only used by the selection menu)
+     * Selection Menu (The menu used for browsing through and selecting a product)
+* Always Visible UIs (contains uis that always remain in view like a loader screen)
+   * Fullscreen loader (Used to display app loading is happening)
+* Misc UIs (contains all other uis like the manuals)
+* Manuals Container
 
-  The general concept of connecting HoloLenses relies on sending and receiving  messages. In the HoloLens, whenever a button is pressed or an object moved, the system sends a message to the server, which is then distributed to all of the other HoloLenses. When the message is received, each system used the information in the message to alter its own environment.  For example, if you pressed a button, the HoloLens would send a message to tell the others about the button being pressed, which would then be processed by the HoloLens pressing the same button.
+### Menu Structure - Common Menus
+The common menus are simple monobehaviours that work on a system of states called modes.  Whenever the primary menu changes, it sets the common menus state to its own.
 
-  Messages are limited to using very simple information, like strings, bytes, ints, floats, etc; however, you can use many lines of information. For example, to send a Vector3, you could send the x, y, and z components as separate lines of the same message, or use the helper method ```AppendVector3(Vector)```.
+For example, when the service sub-menu is opened, the action sets the Quick Actions Menu's state to ServiceMenu with: `QuickActionsMenuController.quickActionsMenuMode = QuickActionsMenuMode.ServiceMenu` The state change causes the Quick actions menu to move itself to the correct local position and changes its exit button icon to a back button. From this state pressing that button will change from opening up the close application confirmation window to going back to the selection menu instead.
 
-  Firstly, drag the Networking Prefab into the Scene, or create an empty game object and drag in the Sharing Stage and Network Controller scripts.
-#### Connecting to a Server
-  Connecting to a server is relatively simple. Simply drag in the provided Networking Prefab, or drag the Sharing Stage script onto an empty game object. In this, you should fill in the Server Address and Server Port areas in the inspector. If you want to set these values in your code, use the following inside of NetworkController.cs:
-  ```csharp
-  stage.Manager.SetServerConnectionInfo(/*server address*/,(byte)/*server port as int*/);
-  ```
-#### Connecting to a Session
-  Sessions are like the server's rooms. Each session holds and communicates with only those inside of it. This way, you can have multiple groups in their own sessions on the server without getting the interactions jumbled.
-  Connecting to a session is as easy as inputting the following line of code
-  ```csharp
-  NetworkController.main.Join(/*session object*/);
-  //or
-  NetworkController.main.FindandJoin(/*session name*/);
-  //or
-  NetworkController.main.FindandJoin();//uses the provided Default Session name
-  ```
-  These methods return true if they successfully connect to the session.
+### Menu Structure - Primary Menus
+A menu is menu controller (a class inheriting from MenuController) hiding and showing various sub menus (all classes inheriting from SubMenuController).
 
-  Though the NDC Holographic Assistant does not allow users to create sessions, this is possible by using
-   ```csharp
-  NetworkController.main.CreateSession(/*session name*/);
-  ```
-#### Adding Custom Messages
-  Messages are sent in-between devices to communicate actions or provide data. Making out messages is how you tell the other systems what you just did in the environment.\
-  Creating a message is done inside of the NetworkController.cs. First, add the new Message type to the SharedMessageType Enum. The method should look like the following:
-  ```csharp
-  public void MethodName(/*any data you wish to enter into your message*/){
-    if(canSend){
-      NetworkOutMessage nm = CreateMessage(SharedMessageType.Name);
-      nm.Write(Data);
-      nm.Write(Data);
-      ...
-      this.serverConnection.Broadcast(nm, MessagePriority.Immediate, MessageReliability.ReliableSequenced, MessageChannel.Avatar);
-    }
-  }
-  ```
-  Then inside of the OnMessageRecieved method, add the new Enum to a case in the switch statement. The case will execute when a message of this type is recieved.\
-  There are some helper methods to clean up you code, like AppendVector3, ReadVector3, AppendTransform, etc.\
-  You can change the Enums in the ``this.serverConnection...`` statement in order to ensure that the other devices catch and process then message, or send the message more frequently.
+#### Selection Menu
+Currently the application only has one primary menu: The selection Menu.  The selection menu contains 3 sub menus providing various different ways of finding the product you are looking for. It also contains the Demo sub-menu and the Service sub menu.  The `SelectionMenuSubController` class switches through these and also manages the miniature products below the menu.
+
+### The Resizer
+The resizer is a simple prefab that allows easy resizing, rotating, and moving of menus with the hololens. Here are the steps to making one work on a new menu:
+
+1. Firstly, position the resizer in the center of what you want to resize.
+2. Resize the resizer's `box collider` to encapsulate the whole menu.  Try to keep the `center` vector to 0,0,0 to avoid the resizer box from working unexpectedly.
+3. Set the scale of the resizer's child gameobject "Cube" to the same as the collider's `size` value.
+4. Move the "stop resizing" button to a good position in front of the menu and right outside of the resizer's `box collider` so it can be pressed.
+5. Finally set the variable `hostTransform` in the `ResizerBox` component to its parent gameobject that you are resizing/moving.
+
+And then you should be good.  If you want it to be activated on start just leave the gameobject enabled. If you want to have a script enable it after a button was pressed or something, just have your script call `resizerBox.Show()` and if you just instantiated the menu and want to place it where you are looking with the camera (similar to the manuals) just call `resizerBox.ShowAndPlaceWithCamera()`.
+
+### Cursor Modifier
+In the project we have a dynamically changing cursor called "Custom Cursor" that can change appearance depending on what you are looking at.  For example over the resizer rotate spheres, it changes to a rotate object icon.  Cursor modifier scripts can be used to change the look of the cursor and/or make the cursor snap onto a button (Useful for small ones).  Just put a "Cursor Modifier" component on the target object, and tweak the settings.
+
+## Classes, Scripts, and Libraries oh my!
+
+### MonoBehaviourPlus
+Most classes should inherit from `MonoBehaviourPlus` which adds a few useful functions and properties like `rectTransform` which handly returns a `RectTransform`.
+
+### Advanced Inspector ([Asset Store Link](https://www.assetstore.unity3d.com/en/#!/content/18025))
+Advanced Inspector is an add-on for unity that expands and improves unity's otherwise lacking default editor.
+The asset is used extensively in the project to organize the editor on many of our scripts.  You can get along just fine not using it in your scripts, but the organization it provides will help you in the long term. You can find the documentation for it [here](http://lightstrikersoftware.com/docs/AdvancedInspector_Manual.pdf).
+
+### DOTween ([Asset Store Link](https://www.assetstore.unity3d.com/en/#!/content/18025))
+DOTween is a free tweening engine for Unity used extensively in our project for both UI and 3d animations. You can find the documentation for it [here](http://dotween.demigiant.com/documentation.php).
+
+### The Datastore
+The DataStore is a ScriptableObject that holds a variety of settings and references to objects.  
+#### Laser Settings
+Various different settings used by the RealtimeLaserEmmiters
+#### Products
+An array of products.  This is where you add new products that will then appear in the selection menu.
+
+* Name - The name of the product
+* Model Name - The name of the model
+* Category - From what product category is this product from
+* Model - A reference to the product's model prefab
+* Can Service - Can this part be opened in the service menu?
+* Can Demo - Can this part be opened in the service menu?
+* Related Manuals - When this part is selected, these are a list of the manuals that can be opened with it
+* Description - A big block of text to describe the product in the favorites menu
 
 
-###### Sending Messages
+### The HP UI Extension Classes
+These are a set of classes that are modifications of the default unity UI scripts to suit my(Marc) vision of the UI better.
+#### HPButton
+The `HPButton` inherits from the `Selectable` class with the ability to be clicked by both hololens and mouse input and trigger an [action delegate](https://msdn.microsoft.com/en-us/library/system.action(v=vs.110).aspx) called `onTrigger`.
+#### HPPrettyButton
+The `HPPrettyButton` class inherits from `HPButton` and is used in the pretty button prefabs.  The prefab for these buttons is called "HPButton - Text" and can be found in the prefabs folder.
+#### HPQuickActionsButton
+The `HPQuickActionsButton` class inherits from `HPButton` and is used to make the `QuickActionsMenu'`s circular buttons work.
+#### HPRadioButtonList
+A simple implementation of radio buttons. Put this script onto a parent of multiple `HPPrettyButton`s and when a button is clicked, the old selected button will be unclicked and the `HPRadioButtonList` will trigger an [action delegate](https://msdn.microsoft.com/en-us/library/system.action(v=vs.110).aspx) with a reference to the new button that was just clicked, though its probably a better idea to append event to all the buttons separately and let the `HPRadioButtonList` handle the selecting of buttons and unselecting of old ones.
+> **Note:** If you need an example of how this is used you can look at the a-z list menu's a-z buttons
+#### HPVerticalScrollRect/HPScrollbar
+These two classes are used together to make vertically scrollable containers with stuff inside them easily controlled by both the mouse and the hololens.  
+> **Note:** If you need an example of how this is used you can look at the "HPScrollRect - Center Text" gameobject and children in the favorites sub-menu
 
-###### Receiving Messages and Processing
+### Utilities
+The utilities class is just a big class containing a massive array of useful methods from around the internet.
+
+### TextMesh Pro ([Asset Store Link](https://www.assetstore.unity3d.com/en/#!/content/84126))
+TextMesh Pro is an asset I decided to use instead of unity's bare and often blurry-looking Text displaying options.  Every Piece of text is displayed using TextMesh Pro.  The font we are using for the entire project is Century Gothic with 1 exception (The Quick actions Menu buttons).  I care a lot about typography.  So if you mess it up anywhere in the project, wherever you are, I will find you and you won't be having a nice day.  - Marc :)
+
+### ProBuilder Basic ([Asset Store Link](https://www.assetstore.unity3d.com/en/#!/content/11919))
+ProBuilder Basic is a mesh creation utility in unity.  It was used a bit everywhere especially to create surfaces on models.
+
+## Networked UI Sharing
+Being able to share Holograms, whether in the same room or across the country, is a very interesting part of the HoloLens.  This section will concentrate on creating, sending, and receiving messages with the system we currently have set in place.
+
+We followed the documentation for implementing the legacy sharing system, so be aware that we are not using unet.  If you plan on recreating the sharing system we recommend you use unet.
+
+The general concept of connecting HoloLenses relies on sending and receiving  messages. In the HoloLens, whenever a button is pressed or an model is rotated, the system sends a message to the server, which is then distributed to all of the other HoloLenses. When the message is received, each system used the information in the message to alter its own environment.  For example, if you pressed a button, the HoloLens would send a message to tell the others about the button being pressed, which would then be processed by the HoloLens pressing the same button.
+
+#### Button Press Syncing
+When you are connected to a session, by default, all buttons will sync their presses.  When a button is pressed on one client, it sends a message to all other clients with a string indicating the position of the button in the heiarchy.  If you don't want a button to sync, just uncheck the `Networked Button` variable in any of the HPButton classes
+
+#### Creating a new Message Type
+If you are planning to sync a new value or set of values between shared clients, you must add a new messagetype to the `SharedMessageType` enum in `NetworkController.cs`
+
+> **NOTE:** Add the enum between `SharedMessageType.First` and `SharedMessageType.Last` otherwise it won't work!
+
+#### Sending a Message
+Next to send the message when the user provides input of a value changes, you can use our `SimpleNetworkSender` class to easily create and send a message.
+When you are done writing stuff on the message you can send it with one of two ways: `SendReliably()` or `SendFast()`.  Use `SendReliably()` if this message was a one time thing that all other receivers absolutely need to receive and use `SendFast()` if we are updating something like the rotation of an object very quickly and its okay if some of the messages don't get to all receivers.
+
+Here's an example sending many different data types:
+```csharp
+var msg = new SimpleNetworkSender(SharedMessageType.MyMessageType);
+
+msg.WriteString("Something awesome totally just happened!");
+msg.WriteInt(42);
+msg.WriteVector3(Vector3.one * 9000);
+
+if(sendReliably)
+	msg.SendReliably();
+else
+	msg.SendFast();
+```
+
+#### Reading the Received Message
+Next to do something when the message is received, you must add a case to the switch statement in the `OnMessageRecieved` function in the `NetworkController` class.  To decode the received message you must read the message in the same order it was written (So if an int, then a string were sent, then you must read the int first and then the string).
+
+## Misc
+### High Quality Picture Taking
+The aweful hololens camera and low-resolution screen mean that screenshots taken with the hololens are pretty aweful.
+
+So here's a clever way I devised to take high quality pictures of our app:  The screenshots of the program were taken using an asset called "Transparency Capture" [link](https://www.assetstore.unity3d.com/en/#!/content/509).  The images gotten from this were overlayed onto decent quality pictures taken with my phone in a picture editing program where both images were rescaled and then the whole thing is cropped to a good size.
+
+1. Take some pictures with a camera or phone of where you want the app to be overlayed over.
+2. Play the app and maximize the game window in unity.  Keep an inspector window open and locked onto the HoloLensCamera gameobject.
+2. Get the app to the state you want and fly arround to a good position for a shot.  Keep in mind the angle you took your picture at.  You want it to look like the menu is upright.
+3. On the "Transparency Capture To File" component on the camera press the Take Screenshot buton and specify a good save location
+4. Finally open up the real picture and the screenshot together in a photo editing program and rotate, scale, crop, and do whatever you have to do to make it look good.  Then export.
+
+> **Note:** The Screenshot size will depend on the size of the Game window when the screenshot is taken, so thats why I suggest you maximize it
 
 ## Recommended Links
+[Easings.net](http://easings.net/) - For easy viewing of different ease functions

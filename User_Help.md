@@ -42,9 +42,9 @@ In the upper right hand corner of the menu, there should be a small box with a d
 If clicked, the resizer box will turn on. The corners (cubes) are used to scale, the spheres are used to rotate, and dragging anywhere else in the box will move.
 
 ## Sharing
-By clicking on the sharing icon in the Quick Actions Menu, you can select a session to join.\
+By clicking on the sharing icon in the Quick Actions Menu, you can select the session you wish to join.\
 ![alt text](https://github.com/JoshuaPyron/NDCHoloLensDocumentation/blob/master/Images/Sharing_Button.png "Sharing Button")\
-If you join with a separate HoloLens, when one person performs an action, the other HoloLens will register that action.
+Now, any action you make will be sent to the other HoloLenses in the session.
 
 ## Manuals
 At any time, you can pull up a manual for the product you are looking at. To do this, click on the manuals Button in the Quick Actions Menu and select the manual you want.\
