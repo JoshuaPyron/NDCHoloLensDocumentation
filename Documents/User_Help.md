@@ -38,7 +38,7 @@ In this menu, you can display a product, display various attachments, and play a
 In this Menu, you can choose a part to service, step through servicing any part, and toggle visibility on certain parts.
 
 ## Moving the UI
-In the upper right hand corner of the menu, there should be a small box with a double sided arrow in the center. If clicked, the resizer box will turn on. The corners (cubes) are used to scale, the spheres are used to rotate, and dragging anywhere else in the box will move.
+In the upper right hand corner of the menu, there should be a small box with a double sided arrow in the center. If clicked, the resizer box will turn on. The corners (cubes) are used to scale, the spheres are used to rotate, and dragging anywhere else in the box will move the UI.\
 ![alt text](Images/Move_Icon_Black.png "Move Icon")
 
 ## Sharing
@@ -47,5 +47,5 @@ By clicking on the sharing icon in the Quick Actions Menu, you can select the se
 Now, any action you make will be sent to the other HoloLenses in the session.
 
 ## Manuals
-At any time, you can pull up a manual for the product you are looking at. To do this, click on the manuals Button in the Quick Actions Menu and select the manual you want.\
+At any time, you can pull up a manual for the product you are looking at. To do this, click on the manuals Button in the Quick Actions Menu and select the manual you want. The manuals will popup in a menu with the resizer activated. Position the menu where you would like and tap to place. You can move these at any time using the menu's [resizer](#moving-the-ui)\
 ![alt text](Images/Manual_Button.png "Manual Button")

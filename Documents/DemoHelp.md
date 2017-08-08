@@ -32,12 +32,11 @@ First, be sure to follow the steps to [set up the HoloLens for development](Docu
 
 ### Resizer
 This is how you can reposition, rotate, and scale the menus.\
-In the upper right hand corner of the menu, there should be a small box with a double sided arrow in the center. If clicked, the resizer box will turn on. The corners (cubes) are used to scale, the spheres are used to rotate, and dragging anywhere else in the box will move.
-![alt text](Images/Move_Icon_Black.png "Move Icon") 
+In the upper right hand corner of the menu, there should be a small box with a double sided arrow in the center. If clicked, the resizer box will turn on. The corners (cubes) are used to scale, the spheres are used to rotate, and dragging anywhere else in the box will move the UI.\
+![alt text](Images/Move_Icon_Black.png "Move Icon")
 
 ### Manuals
-At any time, you can pull up a manual for the product you are looking at. To do this, click on the manuals Button in the Quick Actions Menu and select the manual you want.\
-![alt text](Images/Manual_Button.png "Manual Button")
+At any time, you can pull up a manual for the product you are looking at. To do this, click on the manuals Button in the Quick Actions Menu and select the manual you want. The manuals will popup in a menu with the resizer activated. Position the menu where you would like and tap to place. You can move these at any time using the menu's [resizer](#moving-the-ui)\
 
 ## Menus
 ### Selection Menu
@@ -45,7 +44,7 @@ This is the menu where you select the product you wish to work with and is divid
 ##### Favorites Menu
 This is the menu that the application will boot to. The menu contains every product the is inside of the application in alphabetical order. We intended to have a system that determines which products you have looked at recently or scan your network for any devices you have and place them first; however, that was never implemented.
 ##### Category Menu
-This menu contains all of the products in the application sorted by the category they are in. Each Product division of the company has a category (CMT, Food Bulk, etc.); however, the products we have in CMT or Food Bulk Packaging.
+This menu contains all of the products in the application sorted by the category they are in. Each Product division of the company has a category (CMT, Food Bulk, etc.); however, the products we have are only in CMT or Food Bulk Packaging.
 ##### AZ Menu
 This menu contains all of the products in the application sorted by the first letter of their name. For example, if A is selected, the Accuscan 6050, AS5012, and AS4012 are displayed.
 
