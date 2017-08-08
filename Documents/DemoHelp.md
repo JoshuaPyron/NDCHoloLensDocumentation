@@ -11,7 +11,7 @@ For practice (and better explanations), open the "Learn Gestures" app on your Ho
 Remember to be very deliberate with your actions.  
 
 ## Setting up the needed Demo Information
-First, be sure to follow the steps to [set up the HoloLens for development](Documentation,md#hololens-development-setup). This will give you access to the "Windows Device Portal".
+First, be sure to follow the steps to [set up the HoloLens for development](Documentation.md#hololens-development-setup). This will give you access to the "Windows Device Portal".
 1. Plug a computer into the router.
 2. Open the HoloLens, got to Settings>Network & Internet and connect to the "HoloLensDemo" Network.
 3. Wait for it to successfully connect, then open "Advanced Options" in the same menu
