@@ -27,17 +27,14 @@ This is the menu that the application will boot to. The menu contains every prod
 This menu contains all of the products in the application sorted by the category they are in. Each Product division of the company has a category (CMT, Food Bulk, etc.); however, the products we have in CMT or Food Bulk Packaging.
 ##### AZ Menu
 This menu contains all of the products in the application sorted by the first letter of their name. For example, if A is selected, the Accuscan 6050, AS5012, and AS4012 are displayed.
-
 ### Demo Menu
 Once a product has been selected and the "Demo" button pressed, this menu will pop up.
 In this menu, you can display a product, display various attachments, and play a short animation.
-
 ### Service Menu
 In this Menu, you can choose a part to service, step through servicing any part, and toggle visibility on certain parts.
 
 ## Moving the UI
 In the upper right hand corner of the menu, there should be a small box with a double sided arrow in the center.
-
 If clicked, the resizer box will turn on. The corners (cubes) are used to scale, the spheres are used to rotate, and dragging anywhere else in the box will move.
 
 ## Sharing
