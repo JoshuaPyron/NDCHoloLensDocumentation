@@ -10,6 +10,14 @@ For practice (and better explanations), open the "Learn Gestures" app on your Ho
 
 Remember to be very deliberate with your actions.  
 
+### Set up the HoloLens and Router.
+1. Plug a computer into the router.
+2. Open the HoloLens, got to Settings>Network & Internet and connect to the "HoloLensDemo" Network.
+3. Wait for it to successfully connect, then open "Advanced Options" in the same menu
+4. In the computer, type the IPv4 address of the HoloLens into the browser.
+5. To show what you are seeing go to the "Mixed Reality Capture" tab, uncheck "Mic Audio" and "PV Audio", and hit "Live Preview"
+6. Expand the player to full screen and broadcast your screen to the projector/display you are presenting from.
+
 ### Setting up the needed Demo Information
 1.	Open the app at least once. Hopefully, we will put the latest build on it before you leave.
 2.	Place the two menus in the location you want them for the presentation.
