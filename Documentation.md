@@ -37,9 +37,12 @@ It is recommended that you have a pretty decent understanding of coding in Unity
 	2. [Creating a new Message Type](#creating-a-new-message-type)
 	3. [Sending a Message](#sending-a-message)
 	4. [Reading the Received Message](#reading-the-received-message)
-5. [Misc](#misc)
+	
+5. [Building The Application](#building-the-application)
+6. [Misc](#misc)
 	1. [High Quality Picture Taking](#high-quality-picture-taking)
-6. [Recommended Links](#recommended-links)
+	2. [HoloLens Development Setup](#hololens-development-setup)
+7. [Recommended Links](#recommended-links)
 
 ## Adding Products
 
@@ -257,6 +260,31 @@ else
 #### Reading the Received Message
 Next to do something when the message is received, you must add a case to the switch statement in the `OnMessageRecieved` function in the `NetworkController` class.  To decode the received message you must read the message in the same order it was written (So if an int, then a string were sent, then you must read the int first and then the string).
 
+## Building The Application
+Once you have something you wish to build, the steps are fairly straight forward. Besure that you have [setup the HoloLens for development.](#hololens-development-setup)\
+**Note:** If you have already built the app once, follow steps 10,11, and 16.
+1. In the upper-left corner of Unity, select Edit>Project Settings>Quality
+2. In the Inspector, click on the drop down under the Windows Store icon and select "Fastest"
+3. In the upper-left corner of Unity, select File> Build Settings...
+4. Select "Windows Store" and press the "Switch Platform" button.
+5. Click on the "Add Open Scenes" button
+6. Ensure "Unity C# Projects" is checked
+7. Click on the "Player Settings..." button
+8. In the Publishing Settings Section, make sure that the needed capabilities are selected (For the NDC HoloLens Experience, these are "InternetClient, PrivateNetworkClientServer, SpatialPerception, WebCam, and Microphone)
+9. In the Other Settings Section, check "Virtual Reality Supported", and make sure that "Windows Holographic" is in the "Virtual Reality SDKs" list
+10. Finally in the FIle>Build Settings.. menu, click on the Build button, and select the App folder(create it if you do not see it)
+11. When complete, a window will open to the App folder. Open the generated SLN.
+12. In the dropdowns at the top of the window, select Release and x86
+13. If the HoloLens is connected to your computer with a cable, select "Local Machine" in the dropdown next to play button and skip step 14. If not, select "Remote Machine".
+14. In your HoloLens, go to Settings>Network & Internet>Advanced Options and input your IPv4 address into the window that appeared in Visual Studio. 
+	1. If no window appeared, right-click your project in the Solution Explorer, select Properties, and go to the Debug tab. Input the IPv4 address into the field "Remote machine".
+15. At this point, Visual Studio should be asking for a pin. In you HoloLens, go to Settings>Update & Security>For Developers>Paired Devices and click on the "Pair" button. Input the pin into Visual Studio. **NOTE:** DO NOT CLOSE THE DISPLAY SHOWING YOUR PIN UNTIL YOU HAVE FULLY CONNECTED.
+16. Finally, hit the play button and Visual Studio should install your app onto your HoloLens.
+
+
+
+If you wish to change the IP address of your device, follow Step 14i.
+
 ## Misc
 ### High Quality Picture Taking
 The terrible hololens camera and low-resolution screen mean that screenshots taken with the hololens are pretty awful.
@@ -268,6 +296,9 @@ The terrible hololens camera and low-resolution screen mean that screenshots tak
 4. Finally open up the real picture and the screenshot together in a photo editing program and rotate, scale, crop, and do whatever you have to do to make it look good.  Then export.
 
 > **Note:** The Screenshot size will depend on the size of the Game window when the screenshot is taken, so thats why I suggest you maximize it
+
+### HoloLens Development Setup
+In your HoloLens, go to Settings>Update & Security>For Developers. Turn on Developer Mode and Device Portal.
 
 ## Recommended Links
 [Easings.net](http://easings.net/) - For easy viewing of different ease functions
