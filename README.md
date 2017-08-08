@@ -1,4 +1,4 @@
-# NDCHoloLensDocumentation
+# NDC HoloLens Documentation
 This repo holds the documentation for the NDC HoloLens Experience. Developed by Joshua Pyron and Marc Guiselin in the Summer of 2017
 
 ## [Demo Assistant](Documents/DemoHelp.md)
