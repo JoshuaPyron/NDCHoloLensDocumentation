@@ -4,9 +4,13 @@ Click [here](Documentation.md) if you are looking for the documentation for codi
 
 1. [Gestures](#gestures)
 2. [Menus and Navigation](#menus-and-navigation)
+  1. [Favorites Menu](#favorites-menu)
+  2. [Category Menu](#category-menu)
+  3. [AZ Menu](#az-menu)
+  4. [Service Menu](#service-menu)
 3. [Moving the UI](#moving-the-ui)
 4. [Sharing](#sharing)
-5. [Service Menu](#service-menu)
+5. [Manuals](#manuals)
 
 ## Gestures
 **_Gaze_** - This is the direction where your head is facing, represented by a cursor.\
