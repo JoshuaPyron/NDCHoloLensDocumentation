@@ -50,4 +50,4 @@ Hold right-click while preforming the following actions to navigate in the Scene
 "E": up\
 drag mouse: look around\
 scroll-wheel-up: move slowly forward\
-scroll-wheel-down: move slowly backward\
+scroll-wheel-down: move slowly backward
