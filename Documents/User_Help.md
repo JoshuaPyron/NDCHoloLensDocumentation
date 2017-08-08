@@ -37,9 +37,8 @@ In this menu, you can display a product, display various attachments, and play a
 ### Service Menu
 In this Menu, you can choose a part to service, step through servicing any part, and toggle visibility on certain parts.
 
-## Moving the UI
-In the upper right hand corner of the menu, there should be a small box with a double sided arrow in the center.
-If clicked, the resizer box will turn on. The corners (cubes) are used to scale, the spheres are used to rotate, and dragging anywhere else in the box will move.
+## Moving the UI 
+In the upper right hand corner of the menu, there should be a small box with a double sided arrow in the center. ![alt text](Images/Move_Icon_Black.png "Move Icon") If clicked, the resizer box will turn on. The corners (cubes) are used to scale, the spheres are used to rotate, and dragging anywhere else in the box will move.
 
 ## Sharing
 By clicking on the sharing icon in the Quick Actions Menu, you can select the session you wish to join.\

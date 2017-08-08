@@ -15,9 +15,8 @@ First, be sure to follow the steps to [set up the HoloLens for development](Docu
 1. Plug a computer into the router.
 2. Open the HoloLens, got to Settings>Network & Internet and connect to the "HoloLensDemo" Network.
 3. Wait for it to successfully connect, then open "Advanced Options" in the same menu
-4. In the computer, type the IPv4 address of the HoloLens into the browser to access the Windows Device Portal.
-5. Open the app at least once. Hopefully, we will put the latest build on it before you leave.
-6. Place the two menus in the location you want them for the presentation.
+4. In an internet browser, type the IPv4 address of the HoloLens into the browser to access the Windows Device Portal.
+5. Open the app, and place the two menus in the location you want them for the presentation.
 7. Close the app by clicking on the exit button. If you simply do the “bloom” gesture, the values will not be saved, because the app will still be running in the background.
 8. In the Windows Device Portal, select the File Explorer tab.
 9.	Go to the following directory to find the DemoInfo text file: LocalAppData\\PrimaryHoloProject_1.0.0.0_x86__pt6n26qfys7q8\\LocalState
@@ -27,13 +26,13 @@ First, be sure to follow the steps to [set up the HoloLens for development](Docu
     3.	**_Product_IP_** is the IPv4 of the device that you want to be displayed on the Gauge Menu. If Simulate_Product_Data is True, you can simply leave this line alone.
 11.	Delete the DemoInfo file in the HoloLens (using the web browser)
 12.	In “Upload a file to this directory”, click “Choose File”, select the modified DemoInfo file, and click Upload.
-13. To show what you are seeing go to the "Mixed Reality Capture" tab in the Windows Device Portal, uncheck "Mic Audio" and "PV Audio", and hit "Live Preview"
+13. To show what you are seeing go to the "Mixed Reality Capture" tab in the Windows Device Portal, uncheck "Mic Audio" and "PV Audio" (helps with latency and framerate), and hit "Live Preview"
 14. Expand the player to full screen and broadcast your screen to the projector/display you are presenting from.
 
 
 ### Resizer
 This is how you can reposition, rotate, and scale the menus.\
-In the upper right hand corner of the menu, there should be a small box with a double sided arrow in the center. If clicked, the resizer box will turn on. The corners (cubes) are used to scale, the spheres are used to rotate, and dragging anywhere else in the box will move.
+In the upper right hand corner of the menu, there should be a small box with a double sided arrow in the center. ![alt text](Images/Move_Icon_Black.png "Move Icon") If clicked, the resizer box will turn on. The corners (cubes) are used to scale, the spheres are used to rotate, and dragging anywhere else in the box will move.
 
 ### Manuals
 At any time, you can pull up a manual for the product you are looking at. To do this, click on the manuals Button in the Quick Actions Menu and select the manual you want.\
