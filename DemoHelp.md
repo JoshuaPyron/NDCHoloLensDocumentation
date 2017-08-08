@@ -31,15 +31,28 @@ Remember to be very deliberate with your actions.
 
 
 ### Resizer
-This is how you can reposition, rotate, and scale the menus.
-
+This is how you can reposition, rotate, and scale the menus.\
 In the upper right hand corner of the menu, there should be a small box with a double sided arrow in the center. If clicked, the resizer box will turn on. The corners (cubes) are used to scale, the spheres are used to rotate, and dragging anywhere else in the box will move.
 
-## Demo Menu
+### Manuals
+At any time, you can pull up a manual for the product you are looking at
+
+## Menus
+### Selection Menu
+This is the menu where you select the product you wish to work with and is divided into 3 sub-menus: Favorites, Categories, and AZ.
+##### Favorites Menu
+This is the menu that the application will boot to. The menu contains every product the is inside of the application in alphabetical order. We intended to have a system that determines which products you have looked at recently or scan your network for any devices you have and place them first; however, that was never implemented.
+##### Category Menu
+This menu contains all of the products in the application sorted by the category they are in. Each Product division of the company has a category (CMT, Food Bulk, etc.); however, the products we have in CMT or Food Bulk Packaging.
+##### AZ Menu
+This menu contains all of the products in the application sorted by the first letter of their name. For example, if A is selected, the Accuscan 6050, AS5012, and AS4012 are displayed.
+
+### Demo Menu
 In this menu, you can display a product, display various attachments, and play a short animation.
 
-## Service Menu
+### Service Menu
 In this Menu, you can choose a part to service, step through servicing any part, and toggle visibility on certain parts.
 
-## Sharing
-By clicking on the sharing icon in the Quick Actions Menu, you can select a session
+### Sharing
+By clicking on the sharing icon in the Quick Actions Menu, you can select a session to join. If you join with a separate HoloLens, when one person performs an action, the other HoloLens will register that action.
+![alt text](https://github.com/JoshuaPyron/NDCHoloLensDocumentation/blob/master/Images/Sharing_Button.png "Sharing Button")
