@@ -112,7 +112,9 @@ Attachments are add-on models to the product that can be viewed in the demo menu
       else { /*animation played when moved back up to this layer*/ }
   }
 ```
-  When down is true, that means that the transition is coming downward from the layer above. For example, the Laserscan's Lens GameObject is below the Laser System, so moving from the Laser System to the Lens would play the animation in the physicalProduct.parts[1].parts[0] down section of the if statement. Moving back to the Laser System will play the animation in the physicalProduct.parts[1] else statement. physicalProduct.justMovedToThisLayer is the highest layer and moving down to the layer is dedicated to resetting the product and its parts to their original positions.\
+  When down is true, that means that the transition is coming downward from the layer above. For example, the Laserscan's Lens GameObject is below the Laser System, so moving from the Laser System to the Lens would play the animation in the physicalProduct.parts[1].parts[0] down section of the if statement. Moving back to the Laser System will play the animation in the physicalProduct.parts[1] else statement. physicalProduct.justMovedToThisLayer is the highest layer and moving down to the layer is dedicated to resetting the product and its parts to their original positions.
+
+
   Also be sure to set the basicMovePosition variable in the Start method. This controls the distance traveled by a part when one of the basic methods are chosen in the remove step section of the Physical Part set up. By default its value is set to 2' however, some products require larger or smaller distances, this is where you can set the value of the basic move.
   **Note:** be sure the first line of the Start method is ``base.Start();``
 
@@ -244,10 +246,10 @@ These two classes are used together to make vertically scrollable containers wit
 > **Note:** If you need an example of how this is used you can look at the "HPScrollRect - Center Text" GameObject and children in the favorites sub-menu
 
 ### Utilities
-The utilities class is just a big class containing a massive array of useful methods from around the internet.
+The utilities class is just a big class containing a wide array of useful methods.
 
 ### TextMesh Pro ([Asset Store Link](https://www.assetstore.unity3d.com/en/#!/content/84126))
-TextMesh Pro is an asset I decided to use instead of Unity's bare and often blurry-looking Text displaying options.  Every Piece of text is displayed using TextMesh Pro.  The font we are using for the entire project is Century Gothic with 1 exception (The Quick actions Menu buttons).  I care a lot about typography.  
+TextMesh Pro is an asset that provides interesting and clear text.  Every Piece of text is displayed using TextMesh Pro. The font used throughout the project is Century Gothic with 1 exception (The Quick actions Menu buttons).
 
 ### ProBuilder Basic ([Asset Store Link](https://www.assetstore.unity3d.com/en/#!/content/11919))
 ProBuilder Basic is a mesh creation utility in Unity.  It was used a bit everywhere especially to create surfaces on models.
@@ -255,15 +257,15 @@ ProBuilder Basic is a mesh creation utility in Unity.  It was used a bit everywh
 ## Networked UI Sharing
 Being able to share Holograms, whether in the same room or across the country, is a very interesting part of the HoloLens.  This section will concentrate on creating, sending, and receiving messages with the system we currently have set in place.
 
-We followed the documentation for implementing the legacy sharing system, so be aware that we are not using UNET.  If you plan on recreating the sharing system we recommend you use UNET.
+The Official HoloLens documentation implements a legacy sharing system, so UNET (the recommended sharing service) is not being used. It is recommended that you used UNET if you plan on recreating the sharing system.
 
-The general concept of connecting HoloLenses relies on sending and receiving  messages. In the HoloLens, whenever a button is pressed or an model is rotated, the system sends a message to the server, which is then distributed to all of the other HoloLenses. When the message is received, each system used the information in the message to alter its own environment.  For example, if you pressed a button, the HoloLens would send a message to tell the others about the button being pressed, which would then be processed by the HoloLens pressing the same button.
+The general concept of connecting HoloLenses relies on sending and receiving  messages. In the HoloLens, whenever a button is pressed or a model is rotated, the system sends a message to the server, which is then distributed to all of the other HoloLenses. When the message is received, each system used the information in the message to alter its own environment.  For example, if you pressed a button, the HoloLens would send a message to tell the others about the button being pressed, which would then be processed by the other HoloLens pressing the same button.
 
 #### Button Press Syncing
-When you are connected to a session, by default, all buttons will sync their presses.  When a button is pressed on one client, it sends a message to all other clients with a string indicating the position of the button in the hierarchy.  If you don't want a button to sync, just uncheck the `Networked Button` variable in any of the HPButton classes
+When you are connected to a session, by default, all buttons will sync their presses.  When a button is pressed on one client, it sends a message to all other clients with a string indicating the position of the button in the hierarchy.  If you don't want a button to sync, just uncheck the `Networked Button` variable in any of the `HPButton` classes
 
 #### Creating a new Message Type
-If you are planning to sync a new value or set of values between shared clients, you must add a new messagetype to the `SharedMessageType` enum in `NetworkController.cs`
+If you are planning to sync a new value or set of values between shared clients, you must add a new MessageType to the `SharedMessageType` enum in `NetworkController.cs`
 
 > **NOTE:** Add the enum between `SharedMessageType.First` and `SharedMessageType.Last` otherwise it won't work!
 
@@ -315,11 +317,11 @@ If you wish to change the IP address of your device, follow Step 14i.
 
 ## Misc
 ### High Quality Picture Taking
-The terrible HoloLens camera and low-resolution screen mean that screenshots taken with the HoloLens are pretty awful.
+The HoloLens' camera and low-resolution screen mean that screenshots taken with the HoloLens are very low quality.
 
 1. Take some pictures with a camera or phone of where you want the app to be overlaid over.
 2. Play the app and maximize the game window in Unity.  Keep an inspector window open and locked onto the HoloLensCamera GameObject.
-2. Get the app to the state you want and fly around to a good position for a shot.  Keep in mind the angle you took your picture at.  You want it to look like the menu is upright.
+2. Get the app to the state you want and move in the scene for the right shot.  Keep in mind the angle you took your picture at.  You want it to look like the menu is upright.
 3. On the "Transparency Capture To File" component on the camera press the Take Screenshot button and specify a good save location
 4. Finally open up the real picture and the screenshot together in a photo editing program and rotate, scale, crop, and do whatever you have to do to make it look good.  Then export.
 
