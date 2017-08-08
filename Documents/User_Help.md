@@ -43,9 +43,9 @@ If clicked, the resizer box will turn on. The corners (cubes) are used to scale,
 
 ## Sharing
 By clicking on the sharing icon in the Quick Actions Menu, you can select the session you wish to join.\
-![alt text](https://github.com/JoshuaPyron/NDCHoloLensDocumentation/blob/master/Images/Sharing_Button.png "Sharing Button")\
+![alt text](Images/Sharing_Button.png "Sharing Button")\
 Now, any action you make will be sent to the other HoloLenses in the session.
 
 ## Manuals
 At any time, you can pull up a manual for the product you are looking at. To do this, click on the manuals Button in the Quick Actions Menu and select the manual you want.\
-![alt text](https://github.com/JoshuaPyron/NDCHoloLensDocumentation/blob/master/Images/Manual_Button.png "Manual Button")
+![alt text](Images/Manual_Button.png "Manual Button")
