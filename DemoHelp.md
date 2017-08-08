@@ -54,5 +54,6 @@ In this menu, you can display a product, display various attachments, and play a
 In this Menu, you can choose a part to service, step through servicing any part, and toggle visibility on certain parts.
 
 ### Sharing
-By clicking on the sharing icon in the Quick Actions Menu, you can select a session to join.![alt text](https://github.com/JoshuaPyron/NDCHoloLensDocumentation/blob/master/Images/Sharing_Button.png "Sharing Button")\
+By clicking on the sharing icon in the Quick Actions Menu, you can select a session to join.\
+![alt text](https://github.com/JoshuaPyron/NDCHoloLensDocumentation/blob/master/Images/Sharing_Button.png "Sharing Button")\
 If you join with a separate HoloLens, when one person performs an action, the other HoloLens will register that action.
