@@ -1,5 +1,5 @@
 # Welcome to a short Introduction to Unity
-The goal of this Document is to help you get acquainted with the Unity interface as it can be a bit overwhelming.
+The goal of this document is to help you get acquainted with the Unity interface as it can be a bit overwhelming.
 1. [The different Windows](#windows)
     1. [Hierarchy](#hierarchy)
     2. [Inspector](#inspector)
@@ -13,7 +13,7 @@ Unity has a variety of windows, all with a different function. The following are
 ### Hierarchy
 ![alt text](Images/BasicIntro/HierarchyWindow.png "Hierarchy Window")
 
-This window is where you can find every object in your scene. Here you can select and reorder the object, and you can drop an object into another creating a parent/child relationship.
+This window is where you can find every object in your scene. Here you can select and reorder the objects, and you can drop an object into another creating a parent/child relationship.
 ### Inspector
 ![alt text](Images/BasicIntro/InspectorWindow.png "Inspector Window")
 
