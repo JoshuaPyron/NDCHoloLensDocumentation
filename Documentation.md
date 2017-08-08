@@ -94,30 +94,37 @@ In Servicing Materials, add to the array and add the needed materials to replace
 Attachments are addon models to the product that can be viewed in the demo menu.  Create an "Attachments" gameobject in your prefab and put them all in there.  Once you have created your attachment models and placed them in your prefab, go into your prefab's physical product script, open the demo dropdown, and add your attachment to the demo attachments list.  Again look at the Accuscan 6050 model to see how this was done and what settings were used.
 
 #### Service Scripts
-  The Service Scripts are used to create animations for each of the parts when they are removed during servicing. To start, create a script (Usually of the format: "ProductNameService") that inherits PhysicalProductAnimator. The Start method is where you designate the products layers (much like an onion has layers, if you want to see part A but it is be hind Part B, create an animation to remove Part B and Show Part A) and should initially look something like the following:
+  The Service Scripts are used to create animations for each of the parts when they are removed during servicing. To start, create a script (Usually with the name: "ProductNameService") that inherits PhysicalProductAnimator. The Start method is where you designate the products layers (much like an onion has layers, if you want to see part A but it is be hind Part B, create an animation to remove Part B and Show Part A) and should initially look something like the following:
 ```csharp
   protected override void Start() {
           base.Start();
           physicalProduct.justMovedToThisLayer +=delegate (PhysicalSceneObject THIS, bool down) {
               if (down) { resetProduct(); }//THIS LINE MUST EXIST. It helps reset the product on a few occasions
-              else {  }
+              else { /*animation to play when moved back up to the top layer*/}
     }  }
 ```
   When a part is in a new layer, be sure to add an animation for that part formatted like the following:
 ```csharp
   physicalProduct.parts[0]+=delegate (PhysicalSceneObject THIS, bool down) {
-      if (down) {  }
-      else {  }
+      if (down) { /*animation played when moved down to this layer*/ }
+      else { /*animation played when moved back up to this layer*/ }
   }
 ```
-  When down is true, that means that the transition is coming downward from the layer above. For example, the Laserscan's Laser system is below the shell, so moving from the shell to the Laser system would play the animation in the physicalProduct.parts[0] down section of the if statement. PhysicalProduct.justMovedToThisLayer is the highest layer and is dedicated to resetting the product to its original positions.
+  When down is true, that means that the transition is coming downward from the layer above. For example, the Laserscan's Lens gameobject is below the Laser System, so moving from the Laser System to the Lens would play the animation in the physicalProduct.parts[1].parts[0] down section of the if statement. Moving back to the Laser System will play the animation in the physicalProduct.parts[1] else statement. physicalProduct.justMovedToThisLayer is the highest layer and moving down to the layer is dedicated to resetting the product and its parts to their original positions.
 
+  Any custom animations for removing specific parts should be placed in its own method in this file. When setting up PhysicalPart, simply select the animation for that part. For example, in [LaserSpeedService.cs](Examples/LaserSpeedService.cs) removing the Housing and Circuitry is preformed by assigning the following method to the remove step of a part:
+  ```csharp
+  public void removeHousingAndCircuits() {  
+  	steps.Add(new Step(new PhysicalPart[] { 
+  		physicalProduct.parts[2], physicalProduct.parts[3] }, 
+  		HouseCircuit.DOLocalMoveZ(.03f, 1).SetEase(Ease.InOutCubic)
+	 ));
+  }
+  ```
 
-  Any custom animations for removing specific parts should be placed in its own method in this file. When setting up PhysicalPart, simply select the animation for that part.
-
-  See [UltrascanService.cs](Examples/UltrascanService.cs) for Reference.
+  See [UltrascanService.cs](Examples/UltrascanService.cs) and [LaserSpeedService.cs](Examples/LaserSpeedService.cs) for Reference.
 #### Adding a Product to the List
-  After a Product has been configured and all of the scripts have bee added, save the game object as a prefab by dragging the game object to the project window. Then, in the Assets/Resources folder select the DataStore Object. Press the Plus in the Products drop down, provide the requested information, drag in the new prefab, and select whether or not it can be serviced or demoed.
+  After a Product has been configured and all of the scripts have been added, save the game object as a prefab by dragging the game object to the project window. Then, in the Assets/Resources folder select the DataStore Object. Press the Plus in the Products drop down, provide the requested information, drag in the new prefab, and select whether or not it can be serviced or demoed.
 
 > **Note:**  that this is also the area you can add Tools that the technician can use.
 
