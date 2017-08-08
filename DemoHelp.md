@@ -18,9 +18,9 @@ Remember to be very deliberate with your actions.
 5.	[Open this link in a new tab](http://127.0.0.1:10080/FileExplorer.htm)
 6.	Go to the following directory to find the DemoInfo text file: LocalAppData\\PrimaryHoloProject_1.0.0.0_x86__pt6n26qfys7q8\\LocalState
 7.	Download the existing DemoInfo file and alter the values that you want
-  a.	Simulate_Product_Data should be set to “True” if you do not have access to an instrument
-  b.	Sharing_IP is the IPv4 address of the machine running SharingService.exe. If this is your laptop, input that IP. If SharingService.exe is running on a server, put the server address here.
-  c.	Product_IP is the IPv4 of the device that you want to be displayed on the Gauge Menu. If Simulate_Product_Data is True, you can simply leave this line alone.
+  1.	Simulate_Product_Data should be set to “True” if you do not have access to an instrument
+  2.	Sharing_IP is the IPv4 address of the machine running SharingService.exe. If this is your laptop, input that IP. If SharingService.exe is running on a server, put the server address here.
+  3.	Product_IP is the IPv4 of the device that you want to be displayed on the Gauge Menu. If Simulate_Product_Data is True, you can simply leave this line alone.
 8.	Delete the DemoInfo file in the HoloLens (using the web browser)
 9.	In “Upload a file to this directory”, click “Choose File”, select the modified DemoInfo file, and click Upload.
 
