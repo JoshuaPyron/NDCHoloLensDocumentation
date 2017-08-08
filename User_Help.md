@@ -2,28 +2,49 @@
 Welcome and thank you for using our product!
 Click [here](Documentation.md) if you are looking for the documentation for coding the NDC Holographic Assistant.\
 
+1. [Gestures](#gestures)
+2. [Menus and Navigation](#menus-and-navigation)
+3. [Moving the UI](#moving-the-ui)
+4. [Sharing](#sharing)
+5. [Service Menu](#service-menu)
 
-1. [Using the HoloLens](#using-the-holoLens)
-  1. [Input Methods](#input-methods)
-  2. [Configuration](#configuration)
-2. [Using the NDC Holographic Assistant](#using-the-ndc-holographic-assistant)
-  1. [Menus and Navigation](#menus-and-navigation)
-  2. [Moving the UI](#moving-the-ui)
-  3. [Sharing Service](#sharing-service)
-  4. [Service Menu](#service-menu)
+## Gestures
+Gaze - This is the direction where your head is facing, represented by a cursor.\
+Tap - This gesture is used to click on objects. This is done by holding up one finger, with your thumb resting across you other fingers, then tapping you thumb with your extended finger.\
+Pinch - This is used to drag objects. This is done by making an L with you thumb and forefinger, then pressing the two together. You can then drag an object to the desired location and release it by separating your thumb and forefinger.\
+Bloom - This opens the Main menu for the HoloLens. With you palm up and fingers straight, bring all of your fingers together, then spread out your fingers until parallel with your palm.\
 
-## Using the HoloLens
+For practice (and better explanations), open the "Learn Gestures" app on your HoloLens.
 
-#### Input Methods
+Remember to be very deliberate with your actions.
+ 
+## Menus and Navigation
+### Selection Menu
+This is the menu where you select the product you wish to work with and is divided into 3 sub-menus: Favorites, Categories, and AZ.
+##### Favorites Menu
+This is the menu that the application will boot to. The menu contains every product the is inside of the application in alphabetical order. We intended to have a system that determines which products you have looked at recently or scan your network for any devices you have and place them first; however, that was never implemented.
+##### Category Menu
+This menu contains all of the products in the application sorted by the category they are in. Each Product division of the company has a category (CMT, Food Bulk, etc.); however, the products we have in CMT or Food Bulk Packaging.
+##### AZ Menu
+This menu contains all of the products in the application sorted by the first letter of their name. For example, if A is selected, the Accuscan 6050, AS5012, and AS4012 are displayed.
 
-#### Configuration
+### Demo Menu
+Once a product has been selected and the "Demo" button pressed, this menu will pop up.
+In this menu, you can display a product, display various attachments, and play a short animation.
 
-## Using the NDC Holographic Assistant
+### Service Menu
+In this Menu, you can choose a part to service, step through servicing any part, and toggle visibility on certain parts.
 
-#### Menus and Navigation
+## Moving the UI
+In the upper right hand corner of the menu, there should be a small box with a double sided arrow in the center.
 
-#### Moving the UI
+If clicked, the resizer box will turn on. The corners (cubes) are used to scale, the spheres are used to rotate, and dragging anywhere else in the box will move.
 
-#### Sharing Service
+## Sharing
+By clicking on the sharing icon in the Quick Actions Menu, you can select a session to join.\
+![alt text](https://github.com/JoshuaPyron/NDCHoloLensDocumentation/blob/master/Images/Sharing_Button.png "Sharing Button")\
+If you join with a separate HoloLens, when one person performs an action, the other HoloLens will register that action.
 
-#### Service Menu
+## Manuals
+At any time, you can pull up a manual for the product you are looking at. To do this, click on the manuals Button in the Quick Actions Menu and select the manual you want.\
+![alt text](https://github.com/JoshuaPyron/NDCHoloLensDocumentation/blob/master/Images/Manual_Button.png "Manual Button")
