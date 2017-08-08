@@ -14,8 +14,8 @@ It is recommended that you have a pretty decent understanding of coding in Unity
 	5. [Adding a Product to the List](#adding-a-product-to-the-list)
 2. [Designing a Menu](#designing-a-menu)
 	1. [Gameobject Structure](#gameobject-structure)
-	2. [Menu Structure - Common Menus](#menu-structure-common-menus)
-	3. [Menu Structure - Primary Menus](#menu-structure-primary-menus)
+	2. [Menu Structure - Common Menus](#menu-structure---common-menus)
+	3. [Menu Structure - Primary Menus](#menu-structure---primary-menus)
 	4. [The Resizer](#the-resizer)
 	4. [Cursor Modifier](#cursor-modifier)
 3. [Classes, Scripts, and Libraries oh my!](#classes-scripts-and-libraries-oh-my)
@@ -259,9 +259,7 @@ Next to do something when the message is received, you must add a case to the sw
 
 ## Misc
 ### High Quality Picture Taking
-The aweful hololens camera and low-resolution screen mean that screenshots taken with the hololens are pretty aweful.
-
-So here's a clever way I devised to take high quality pictures of our app:  The screenshots of the program were taken using an asset called "Transparency Capture" [link](https://www.assetstore.unity3d.com/en/#!/content/509).  The images gotten from this were overlayed onto decent quality pictures taken with my phone in a picture editing program where both images were rescaled and then the whole thing is cropped to a good size.
+The terrible hololens camera and low-resolution screen mean that screenshots taken with the hololens are pretty awful.
 
 1. Take some pictures with a camera or phone of where you want the app to be overlayed over.
 2. Play the app and maximize the game window in unity.  Keep an inspector window open and locked onto the HoloLensCamera gameobject.
