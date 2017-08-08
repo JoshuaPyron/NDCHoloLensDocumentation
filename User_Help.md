@@ -1,6 +1,6 @@
 # NDC Holographic Assistant
 Welcome and thank you for using our product!
-Click [here](Documentation.md) if you are looking for the documentation for coding the NDC Holographic Assistant.\
+Click [here](Documentation.md) if you are looking for the documentation for coding the NDC Holographic Assistant.
 
 1. [Gestures](#gestures)
 2. [Menus and Navigation](#menus-and-navigation)
@@ -12,7 +12,7 @@ Click [here](Documentation.md) if you are looking for the documentation for codi
 **_Gaze_** - This is the direction where your head is facing, represented by a cursor.\
 **_Tap_** - This gesture is used to click on objects. This is done by holding up one finger, with your thumb resting across you other fingers, then tapping you thumb with your extended finger.\
 **_Pinch_** - This is used to drag objects. This is done by making an L with you thumb and forefinger, then pressing the two together. You can then drag an object to the desired location and release it by separating your thumb and forefinger.\
-**_Bloom_** - This opens the Main menu for the HoloLens. With you palm up and fingers straight, bring all of your fingers together, then spread out your fingers until parallel with your palm.\
+**_Bloom_** - This opens the Main menu for the HoloLens. With you palm up and fingers straight, bring all of your fingers together, then spread out your fingers until parallel with your palm.
 
 For practice (and better explanations), open the "Learn Gestures" app on your HoloLens.
 
