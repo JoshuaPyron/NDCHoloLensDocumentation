@@ -41,13 +41,13 @@ The files shown are located in the project's "Assets" folder.
 
 ## Movement
 Movement in the Scene Window can take some getting use to but is very intuitive.
-Hold right-click while preforming the following actions to navigate in the Scene window. Hold right-click + Shift to do the following actions quickly:
-"W": forward
-"S": backward
-"A": left
-"D": right
-"Q": down
-"E": up
-drag mouse: look around
-scroll-wheel-up: move slowly forward
-scroll-wheel-down: move slowly backward
+Hold right-click while preforming the following actions to navigate in the Scene window. Hold right-click + Shift to do the following actions quickly:\
+"W": forward\
+"S": backward\
+"A": left\
+"D": right\
+"Q": down\
+"E": up\
+drag mouse: look around\
+scroll-wheel-up: move slowly forward\
+scroll-wheel-down: move slowly backward\
