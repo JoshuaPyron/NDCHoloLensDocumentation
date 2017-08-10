@@ -12,6 +12,7 @@ Remember to be very deliberate with your actions.
 
 ## Setting up the needed Demo Information
 First, be sure to follow the steps to [set up the HoloLens for development](Documentation.md#hololens-development-setup). This will give you access to the "Windows Device Portal".
+If you wish to show off the sharing service, be sure to have SharingService running somewhere you can access. 
 1. Plug a computer into the router.
 2. Open the HoloLens, got to Settings>Network & Internet and connect to the "HoloLensDemo" Network.
 3. Wait for it to successfully connect, then open "Advanced Options" in the same menu
@@ -22,12 +23,12 @@ First, be sure to follow the steps to [set up the HoloLens for development](Docu
 9.	Go to the following directory to find the DemoInfo text file: LocalAppData\\PrimaryHoloProject_1.0.0.0_x86__pt6n26qfys7q8\\LocalState
 10.	Download the existing DemoInfo file and alter the values that you want
     1.	**_Simulate_Product_Data_** should be set to “True” if you do not have access to an instrument
-    2.	**_Sharing_IP_** is the IPv4 address of the machine running SharingService.exe. If this is your laptop, input that IP. If SharingService.exe is running on a server, put the server address here.
+    2.	**_Sharing_IP_** is the IPv4 address of the machine running SharingService.exe. If this is your laptop, input that IP. If SharingService.exe is running on a server, put the server address here. If you are running the SharingService locally, you can choose one of the Local IP addresses displayed in its console window.
     3.	**_Product_IP_** is the IPv4 of the device that you want to be displayed on the Gauge Menu. If Simulate_Product_Data is True, you can simply leave this line alone.
 11.	Delete the DemoInfo file in the HoloLens (using the web browser)
 12.	In “Upload a file to this directory”, click “Choose File”, select the modified DemoInfo file, and click Upload.
-13. To show what you are seeing go to the "Mixed Reality Capture" tab in the Windows Device Portal, uncheck "Mic Audio" and "PV Audio" (helps with latency and framerate), and hit "Live Preview"
-14. Expand the player to full screen and broadcast your screen to the projector/display you are presenting from.
+14. To show what you are seeing go to the "Mixed Reality Capture" tab in the Windows Device Portal, uncheck "Mic Audio" and "PV Audio" (helps with latency and framerate), and hit "Live Preview"
+15. Expand the player to full screen and broadcast your screen to the projector/display you are presenting from.
 
 
 ### Resizer
