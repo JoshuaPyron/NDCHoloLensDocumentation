@@ -1,11 +1,12 @@
 ﻿using DG.Tweening;
+using UnityEngine;
 
 public class UltrascanService : PhysicalProductAnimator {
     
     protected override void Start() {
         base.Start();
         //top layer
-        physicalProduct.justMovedToThisLayer += delegate (PhysicalSceneObject THIS, bool down) {
+        physicalProduct.animateToThisLayer += delegate (PhysicalSceneObject THIS, bool down) {
             //Debug.Log("PhysicialProduct is the new current layer. Animate accordingly.  " + (down ? "Came Down" : "Went Up"));
             if (down) { resetProduct(); }
             else {
@@ -16,18 +17,37 @@ public class UltrascanService : PhysicalProductAnimator {
                 resetProduct();
             }
         };
-        // circuit and screen
-        physicalProduct.parts[3].justMovedToThisLayer += delegate (PhysicalSceneObject THIS, bool down) {
+
+		physicalProduct.jumpToThisLayer += delegate (PhysicalSceneObject THIS, bool down) {
+			//Debug.Log("PhysicialProduct is the new current layer. Animate accordingly.  " + (down ? "Came Down" : "Went Up"));
+			if (down) { resetProduct(); }
+			else {
+				physicalProduct.parts[2].transform.localPosition = physicalProduct.parts[2].transform.localPosition = Vector3.zero;
+				resetProduct();
+			}
+		};
+
+		// circuit and screen
+		physicalProduct.parts[3].animateToThisLayer += delegate (PhysicalSceneObject THIS, bool down) {
             //Debug.Log("The first part in PhysicialProduct is the new current layer. Animate accordingly.  " + (down ? "Came Down" : "Went Up"));
             if (down) {
                 genTween(physicalProduct.parts[2], AxisConstraint.Y, -.05f,.5f);
                 genTween(physicalProduct.parts[1], AxisConstraint.Y, -.03f,.4f,.1f);
                 genTween( physicalProduct.parts[2], AxisConstraint.Z, .1f, .5f, .5f);
                 genTween(physicalProduct.parts[1], AxisConstraint.Z, .1f, .5f, .5f);
-                focusObject(physicalProduct.parts[3], 1);
+                centerObject(physicalProduct.parts[3], 1);
             }
         };
-        physicalProduct.parts[4].justMovedToThisLayer += delegate (PhysicalSceneObject THIS, bool down) {
+		physicalProduct.parts[3].jumpToThisLayer += delegate (PhysicalSceneObject THIS, bool down) {
+			//Debug.Log("The first part in PhysicialProduct is the new current layer. Animate accordingly.  " + (down ? "Came Down" : "Went Up"));
+			if (down) {
+				physicalProduct.parts[1].transform.localPosition = new Vector3(physicalProduct.parts[1].transform.localPosition.x, -.03f, .1f);
+				physicalProduct.parts[2].transform.localPosition = new Vector3(physicalProduct.parts[2].transform.localPosition.x, -.05f, .1f); 
+				centerObject(physicalProduct.parts[3], 1, false);
+			}
+		};
+
+		physicalProduct.parts[4].animateToThisLayer += delegate (PhysicalSceneObject THIS, bool down) {
             //Debug.Log("The first part in PhysicialProduct is the new current layer. Animate accordingly.  " + (down ? "Came Down" : "Went Up"));
             if (down) {
                 genTween(physicalProduct.parts[2], AxisConstraint.Y, -.05f, .5f);
@@ -36,8 +56,15 @@ public class UltrascanService : PhysicalProductAnimator {
                 genTween(physicalProduct.parts[1], AxisConstraint.Z, .1f, .5f, .5f);
             }
         };
+		physicalProduct.parts[4].jumpToThisLayer += delegate (PhysicalSceneObject THIS, bool down) {
+			//Debug.Log("The first part in PhysicialProduct is the new current layer. Animate accordingly.  " + (down ? "Came Down" : "Went Up"));
+			if (down) {
+				physicalProduct.parts[1].transform.localPosition = new Vector3(physicalProduct.parts[1].transform.localPosition.x, -.03f, .1f);
+				physicalProduct.parts[2].transform.localPosition = new Vector3(physicalProduct.parts[2].transform.localPosition.x, -.05f, .1f); 
+			}
+		};
 
-    }
+	}
     public void removeBolts() { steps.Add(new Step(physicalProduct.parts[2],genTween(physicalProduct.parts[2], AxisConstraint.Y, -.05f))); }
     public void removePlate() { steps.Add(new Step(physicalProduct.parts[1],genTween(physicalProduct.parts[1], AxisConstraint.Y, -.03f))); }
 
