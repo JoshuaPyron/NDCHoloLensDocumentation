@@ -1,8 +1,8 @@
 ﻿using DG.Tweening;
 using UnityEngine;
-
+ 
 public class UltrascanService : PhysicalProductAnimator {
-    
+
     protected override void Start() {
         base.Start();
         //top layer
@@ -42,7 +42,7 @@ public class UltrascanService : PhysicalProductAnimator {
 			//Debug.Log("The first part in PhysicialProduct is the new current layer. Animate accordingly.  " + (down ? "Came Down" : "Went Up"));
 			if (down) {
 				physicalProduct.parts[1].transform.localPosition = new Vector3(physicalProduct.parts[1].transform.localPosition.x, -.03f, .1f);
-				physicalProduct.parts[2].transform.localPosition = new Vector3(physicalProduct.parts[2].transform.localPosition.x, -.05f, .1f); 
+				physicalProduct.parts[2].transform.localPosition = new Vector3(physicalProduct.parts[2].transform.localPosition.x, -.05f, .1f);
 				centerObject(physicalProduct.parts[3], 1, false);
 			}
 		};
@@ -60,7 +60,7 @@ public class UltrascanService : PhysicalProductAnimator {
 			//Debug.Log("The first part in PhysicialProduct is the new current layer. Animate accordingly.  " + (down ? "Came Down" : "Went Up"));
 			if (down) {
 				physicalProduct.parts[1].transform.localPosition = new Vector3(physicalProduct.parts[1].transform.localPosition.x, -.03f, .1f);
-				physicalProduct.parts[2].transform.localPosition = new Vector3(physicalProduct.parts[2].transform.localPosition.x, -.05f, .1f); 
+				physicalProduct.parts[2].transform.localPosition = new Vector3(physicalProduct.parts[2].transform.localPosition.x, -.05f, .1f);
 			}
 		};
 
@@ -69,21 +69,21 @@ public class UltrascanService : PhysicalProductAnimator {
     public void removePlate() { steps.Add(new Step(physicalProduct.parts[1],genTween(physicalProduct.parts[1], AxisConstraint.Y, -.03f))); }
 
     #region screen (parts[3])
-    public void removeScreenBracket() { steps.Add(new Step(physicalProduct.parts[3].parts[0],genTween(physicalProduct.parts[3].parts[0], AxisConstraint.Z, .1f))); } 
+    public void removeScreenBracket() { steps.Add(new Step(physicalProduct.parts[3].parts[0],genTween(physicalProduct.parts[3].parts[0], AxisConstraint.Z, .1f))); }
     public void removeRoundScreen() {
         physicalProduct.parts[3].parts[0].populateStep.Invoke();
         steps.Add(new Step(physicalProduct.parts[3].parts[1],genTween(physicalProduct.parts[3].parts[1], AxisConstraint.Z, .1f)));
-    } 
-    public void removeCornerBracket() { steps.Add(new Step(physicalProduct.parts[3].parts[2], genTween(physicalProduct.parts[3].parts[2], AxisConstraint.Z, .1f))); } 
+    }
+    public void removeCornerBracket() { steps.Add(new Step(physicalProduct.parts[3].parts[2], genTween(physicalProduct.parts[3].parts[2], AxisConstraint.Z, .1f))); }
     public void removeSpacer() {
         steps.Add(new Step(physicalProduct.parts[3].parts[3], new Tween[] {
             genTween(physicalProduct.parts[3].parts[3], AxisConstraint.Y, .01f),
             genTween(physicalProduct.parts[3].parts[3], AxisConstraint.Z, .1f)
         }));
     }
-    #endregion 
+    #endregion
     #region circuit (parts[4])
-    public void removeAuxCircuit() { steps.Add(new Step(physicalProduct.parts[4].parts[0],genTween(physicalProduct.parts[4].parts[0], AxisConstraint.Y, -.1f))); } 
+    public void removeAuxCircuit() { steps.Add(new Step(physicalProduct.parts[4].parts[0],genTween(physicalProduct.parts[4].parts[0], AxisConstraint.Y, -.1f))); }
     public void removeMainCircuit() { steps.Add(new Step(physicalProduct.parts[4].parts[1],genTween(physicalProduct.parts[4].parts[1], AxisConstraint.Y, -.1f))); }
     #endregion
 }
