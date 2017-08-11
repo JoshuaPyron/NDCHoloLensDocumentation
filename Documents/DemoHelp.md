@@ -12,12 +12,13 @@ Remember to be very deliberate with your actions.
 
 ## Setting up the needed Demo Information
 First, be sure to follow the steps to [set up the HoloLens for development](Documentation.md#hololens-development-setup). This will give you access to the "Windows Device Portal".
-If you wish to show off the sharing service, be sure to have SharingService running somewhere you can access. 
+If you wish to show off the sharing service, be sure to have SharingService running somewhere you can access.
 1. Plug a computer into the router.
 2. Open the HoloLens, got to Settings>Network & Internet and connect to the "HoloLensDemo" Network.
 3. Wait for it to successfully connect, then open "Advanced Options" in the same menu
 4. In an internet browser, type the IPv4 address of the HoloLens into the browser to access the Windows Device Portal.
-5. Open the app, and place the two menus in the location you want them for the presentation.
+5. The browser should request a login use the following- Username: Brent, Password: abcdefghi
+6. Open the app, and place the two menus in the location you want them for the presentation.
 7. Close the app by clicking on the exit button. If you simply do the “bloom” gesture, the values will not be saved, because the app will still be running in the background.
 8. In the Windows Device Portal, select the File Explorer tab.
 9.	Go to the following directory to find the DemoInfo text file: LocalAppData\\PrimaryHoloProject_1.0.0.0_x86__pt6n26qfys7q8\\LocalState
