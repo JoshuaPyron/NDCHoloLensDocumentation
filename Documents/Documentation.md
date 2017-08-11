@@ -100,7 +100,11 @@ Attachments are add-on models to the product that can be viewed in the demo menu
   protected override void Start() {
           base.Start();
 					basicMovePosition = 2;
-          physicalProduct.justMovedToThisLayer +=delegate (PhysicalSceneObject THIS, bool down) {
+					physicalProduct.animateToThisLayer+=delegate (PhysicalSceneObject THIS,bool down){
+						if (down) { resetProduct(); }//THIS LINE MUST EXIST. It helps reset the product on a few occasions
+						else { /*animation to play when moved back up to the top layer*/}
+					}
+          physicalProduct.jumpToThisLayer +=delegate (PhysicalSceneObject THIS, bool down) {
               if (down) { resetProduct(); }//THIS LINE MUST EXIST. It helps reset the product on a few occasions
               else { /*animation to play when moved back up to the top layer*/}
     }  }
@@ -112,8 +116,9 @@ Attachments are add-on models to the product that can be viewed in the demo menu
       else { /*animation played when moved back up to this layer*/ }
   }
 ```
-  When down is true, that means that the transition is coming downward from the layer above. For example, the Laserscan's Lens GameObject is below the Laser System, so moving from the Laser System to the Lens would play the animation in the physicalProduct.parts[1].parts[0] down section of the if statement. Moving back to the Laser System will play the animation in the physicalProduct.parts[1] else statement. physicalProduct.justMovedToThisLayer is the highest layer and moving down to the layer is dedicated to resetting the product and its parts to their original positions.
+  When down is true, that means that the transition is coming downward from the layer above. For example, the Laserscan's Lens GameObject is below the Laser System, so moving from the Laser System to the Lens would play the animation in the physicalProduct.parts[1].parts[0] down section of the if statement. Moving back to the Laser System will play the animation in the physicalProduct.parts[1] else statement. physicalProduct.jumpToThisLayer is the highest layer and moving down to the layer is dedicated to resetting the product and its parts to their original positions.
 
+The difference between jumpToThisLayer and animateToThisLayer is whether or not the product will animate the movement. jumpToThisLayer simply teleports the parts to the given positions.
 
   Also be sure to set the basicMovePosition variable in the Start method. This controls the distance traveled by a part when one of the basic methods are chosen in the remove step section of the Physical Part set up. By default its value is set to 2' however, some products require larger or smaller distances, this is where you can set the value of the basic move.
   **Note:** be sure the first line of the Start method is ``base.Start();``
